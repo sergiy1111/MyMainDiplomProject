@@ -1,8 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Post>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var post in Model)
+{
+    <div class="col-6 offset-2">
+        <h2>@post.Text</h2>
+        <p>Author: @post.User.UserName</p>
+        <p>Tags: @string.Join(", ", post.PostHashTags.Select(ht => ht.Name))</p>
+        @if (post.Files.Any())
+        {
+            <img src="@Url.Content(post.Files.First().FileName)" alt="Post image" />
+        }
+    </div>
+}

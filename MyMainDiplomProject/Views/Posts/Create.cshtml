@@ -1,4 +1,4 @@
-﻿@model MyMainDiplomProject.Models.Post
+﻿@model MyMainDiplomProject.Models.ViewModel.PostViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -11,11 +11,21 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Store">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Text" class="control-label"></label>
                 <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HashTags" class="control-label"></label>
+                <input asp-for="HashTags" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">File</label>
+                <input type="File" class="form-control" />
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group">

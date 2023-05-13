@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic.FileIO;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
+using MyMainDiplomProject.Models.ViewModel;
 
 namespace MyMainDiplomProject.Controllers
 {
@@ -35,7 +37,7 @@ namespace MyMainDiplomProject.Controllers
             }
 
             var post = await _context.Posts
-                .Include(p => p.User)
+                .Include(p => p.User).Include(p => p.Files)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (post == null)
             {
@@ -45,51 +47,57 @@ namespace MyMainDiplomProject.Controllers
             return View(post);
         }
 
+        // GET: Posts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: /Post/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(PostCreateViewModel ViewModel)
+        public async Task<IActionResult> Store(PostViewModel model)
         {
             if (ModelState.IsValid)
             {
-                Post NewPost = new Post();
-                NewPost.Text = ViewModel.Text;
-                NewPost.CreatedDateRime = DateTime.Now;
-                //NewPost.UserId = Convert.ToInt32(_userManager.GetUserId(User));
-                NewPost.User = _context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault();
-                var UserId = NewPost.User.Id;
-                NewPost.UserId = UserId;
-
-                /*
-                if (ViewModel.PostHashTags.Count() != 0)
+                var post = new Post
                 {
-                    List<HashTags> HashTags = new List<HashTags>();
+                    UserId = "a84134c8-3136-483e-94d9-0a3128c93ef4", // зміни на користувача, який створив пост
+                    Text = model.Text,
+                    CreatedDateRime = DateTime.Now,
+                    Files = new List<Files>(),
+                    PostHashTags = new List<HashTags>()
+                };
 
-                    foreach (var Item in ViewModel.PostHashTags)
+                if (model.HashTags != null)
+                {
+                    foreach (var tag in model.HashTags)
                     {
-                        if (_context.HashTags.Find(Item) != null)
+                       if(_context.HashTags.Where(i => i.Name == tag).Count() > 0)
+                       {
+                            post.PostHashTags.Add(_context.HashTags.Where(i => i.Name == tag).FirstOrDefault());
+                       }
+                       else
                         {
-                            HashTags NewHashTags = new HashTags();
-                            NewHashTags.Name = Item;
-                            _context.HashTags.Add(NewHashTags);
-
-                            PostHashTags NewPostHagsTag = new PostHashTags();
-                            NewPostHagsTag.PostId = _context.HashTags.Find(Item).Id;
-                            _context.PostHashTags.Add(NewPostHagsTag);
-                            _context.SaveChanges();
+                            post.PostHashTags.Add(new HashTags() { Name = tag });
                         }
                     }
+
+
                 }
-                */
-                _context.Posts.Add(NewPost);
-                _context.SaveChanges();
+
+                var file = new Files
+                {
+                    FileName = @"https://i1.sndcdn.com/avatars-000319437721-fr8dmf-t500x500.jpg"
+                };
+                post.Files.Add(file);
+
+
+                _context.Posts.Add(post);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
             }
-            return View();
+
+            return View("Create", model);
         }
 
 

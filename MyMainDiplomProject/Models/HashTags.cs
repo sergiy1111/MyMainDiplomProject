@@ -8,5 +8,6 @@ namespace MyMainDiplomProject.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public virtual List<Post>? Post { get; set; }
     }
 }

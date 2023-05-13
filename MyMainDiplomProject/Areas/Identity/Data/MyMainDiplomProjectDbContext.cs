@@ -18,7 +18,6 @@ public class MyMainDiplomProjectDbContext : IdentityDbContext<MyMainDiplomProjec
     public DbSet<HashTags> HashTags { get; set; }
     public DbSet<Likes> Likes { get; set; }
     public DbSet<Post> Posts { get; set; }
-    public DbSet<PostHashTags> PostHashTags { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

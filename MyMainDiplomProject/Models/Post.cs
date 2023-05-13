@@ -12,7 +12,7 @@ namespace MyMainDiplomProject.Models
         public string? Text { get; set; }
         public DateTime CreatedDateRime { get; set; }
         public virtual MyMainDiplomProjectUser User { get; set; }
-        public virtual List<PostHashTags>? PostHashTags { get; set;}
+        public virtual List<HashTags>? PostHashTags { get; set;}
         public virtual List<Likes>? Likes { get; set; }
         public virtual List<Files>? Files { get; set; }
         public virtual List<Comments>? Comments { get; set; }
