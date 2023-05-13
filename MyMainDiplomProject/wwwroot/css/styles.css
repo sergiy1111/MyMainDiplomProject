@@ -174,3 +174,654 @@ nav {
 }
 
     /* Інші стилі, які вам потрібні */
+
+/*Список усіх користувачів*/
+
+.user-block {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 60%;
+    height: 80px;
+    margin: 20px auto;
+    background-color: #fff;
+}
+
+
+.user-image {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.user-image-big {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.user-info {
+    margin-left: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.follow-button {
+    margin-left: auto;
+    background-color: #6b6d70;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+    .follow-button:hover {
+        background-color: #fff;
+        color: #4c4c4c;
+        border: 1px solid #4c4c4c;
+    }
+
+/*Фільтр пошуку*/
+
+/*
+.filter-block {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}*/
+
+.search-filter {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    float: right;
+    border-radius: 10px;
+    font-size: 20px
+}
+
+    .search-filter h3, h2 {
+        text-align: center;
+    }
+
+    .search-filter label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .search-filter input[type="text"],
+    .search-filter input[type="number"],
+    .search-filter select {
+        width: 100%;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .search-filter fieldset {
+        margin-bottom: 10px;
+    }
+
+    .search-filter legend {
+        font-weight: bold;
+    }
+
+    .search-filter input[type="radio"] {
+        margin-right: 5px;
+    }
+
+    .search-filter button[type="submit"] {
+        width: 100%;
+        background-color: #6b6d70;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 0px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .search-filter button:hover {
+        background-color: #fff;
+        color: #4c4c4c;
+        border: 1px solid #4c4c4c;
+    }
+
+/*Панель*/
+
+.panel {
+    margin: 30pt 0pt;
+    height: 50px;
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/*Профіль користувача*/
+
+.user-block-page {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    float: left;
+    border-radius: 10px;
+    font-size: 20px
+}
+
+    .user-block-page h2 {
+        text-align: left;
+        font-size: 26px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .user-block-page label, span, p {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .user-block-page fieldset {
+        margin-bottom: 10px;
+    }
+
+    .user-block-page legend {
+        font-weight: bold;
+    }
+
+    .user-block-page button {
+        width: 100%;
+        background-color: #6b6d70;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 0px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .user-block-page button:hover {
+            background-color: #fff;
+            color: #4c4c4c;
+            border: 1px solid #4c4c4c;
+        }
+
+.user-avatar-page {
+    border-radius: 5%;
+    width: 150px;
+    height: 150px;
+}
+
+    .user-avatar-page img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        margin-left: 65px;
+    }
+
+.post-panel {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    width: 900px;
+    position: absolute;
+    left: 60%;
+    transform: translateX(-50%);
+}
+
+.post-panel-user {
+    display: flex;
+    align-items: center;
+}
+
+.post-panel-text {
+    display: flex;
+    align-items: center;
+}
+
+/*Пости*/
+.post {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    position: absolute;
+    left: 57%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.post-main-page {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    position: absolute;
+    left: 45%;
+    right: 18%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.post-big-page {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+
+.user-info1 {
+    display: flex;
+    align-items: center;
+}
+
+.user-image1 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-details1 {
+    flex-grow: 1;
+}
+
+.user-name1 {
+    font-weight: bold;
+}
+
+.post-date {
+    color: #888;
+}
+
+.post-button {
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+.post-content,
+.post-hestag,
+.post-comments {
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+    .post-hestag label {
+        margin-top: 5px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+.post-text {
+    margin-top: 10px;
+    text-indent: 20px;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.post-stats {
+    border-top: 1px solid #ccc;
+    margin-top: 5px;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.heart-icon,
+.comment-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.heart-count,
+.comment-count {
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+/*Фільтри для головної сторінки*/
+
+.main-page-filter {
+    background-color: #ccc;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    float: right;
+    border-radius: 10px;
+    font-size: 20px
+}
+
+    .main-page-filter h2 {
+        text-align: left;
+        font-size: 26px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-page-filter label, span, p {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-page-filter fieldset {
+        margin-bottom: 10px;
+    }
+
+    .main-page-filter legend {
+        font-weight: bold;
+    }
+
+    .main-page-filter button {
+        width: 100%;
+        background-color: #6b6d70;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 0px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .main-page-filter button:hover {
+            background-color: #fff;
+            color: #4c4c4c;
+            border: 1px solid #4c4c4c;
+        }
+
+/*Стилі для вікна параметрів користувача*/
+
+.settings-block {
+    display: inline-block;
+    width: 45%;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+    .settings-block h3 {
+        margin-top: 0;
+        border: 1px solid black;
+        padding-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .settings-block input {
+        margin: 20px 0;
+    }
+/*Детальна інформація про користувача*/
+
+.user-details-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.user-details-block {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+    .user-details-block h3 {
+        margin-top: 0;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+/*Встворення коментарів*/
+
+.comment-input-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+    .comment-input-block input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        resize: vertical;
+        min-height: 40px;
+        max-height: 200px;
+        overflow: auto;
+        margin-top: 10px
+    }
+
+    .comment-input-block button {
+        margin-left: 10px;
+        margin-top: 10px;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+/*Коментарі користувачів*/
+
+.comment-block {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+}
+
+    .comment-block .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .comment-block .avatar {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+    }
+
+        .comment-block .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+    .comment-block .user-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        .comment-block .user-details h4 {
+            margin: 0;
+        }
+
+    .comment-block .comment-date {
+        color: gray;
+    }
+
+    .comment-block .comment-content {
+        margin-right: auto;
+    }
+
+        .comment-block .comment-content p {
+            margin: 0;
+        }
+
+/*Адмін панель*/
+
+
+.admin-container {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    position: absolute;
+    left: 35%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 930px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.admin-block {
+    width: 250px;
+    margin: 20px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+
+    .admin-block h4 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .admin-block .admin-content {
+        margin-top: 10px;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+    }
+
+
+/*Створення посту*/
+
+.text-block-create-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text-input-create-post {
+    width: 700px;
+    height: 300px;
+    resize: vertical;
+}
+
+.button-row-create-post {
+    display: flex;
+    justify-content: center;
+}
+
+.hashtag-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.hashtag-label {
+    margin-right: 10px;
+}
+
+.hashtag-input {
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+/*Фігня*/
+.image-label-test {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+

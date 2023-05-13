@@ -8,7 +8,7 @@ namespace MyMainDiplomProject.Models
     {
         [Key]
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public string? Description { get; set; }
         public bool ShowDescription { get; set; }
         public string? WorkPlase { get; set; }
