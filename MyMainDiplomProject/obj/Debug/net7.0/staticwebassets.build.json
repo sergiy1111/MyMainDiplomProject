@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UmQWfV+MI66S7WXzF0M7+eFfdDFX40sT420W+3DYFKE=",
+  "Hash": "rBw1XWQA3FMc73cHcvM5jLce5aGw4XR0OkqzeKAFU0g=",
   "Source": "MyMainDiplomProject",
   "BasePath": "_content/MyMainDiplomProject",
   "Mode": "Default",
@@ -1086,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\css\\styles.css",
+      "SourceId": "MyMainDiplomProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\",
+      "BasePath": "_content/MyMainDiplomProject",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\favicon.ico",

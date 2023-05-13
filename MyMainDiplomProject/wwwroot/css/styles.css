@@ -1,0 +1,176 @@
+﻿body {
+    background-color: lightblue;
+}
+
+header {
+    position: relative;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.logo {
+    position: absolute;
+    left: 10px;
+    right: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+    .logo a {
+        margin-left: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+    }
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        margin-left: 1.5rem;
+        z-index: 10;
+    }
+
+    nav a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        color: #999;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+        nav a:hover {
+            background-color: #6e6b6b;
+            color: #fff;
+        }
+
+.fa {
+    font-size: 1.2rem;
+}
+
+.fa-home::before {
+    content: "\f015";
+}
+
+.fa-user::before {
+    content: "\f007";
+}
+
+.fa-envelope::before {
+    content: "\f0e0";
+}
+
+.fa-bell::before {
+    content: "\f0f3";
+}
+
+.fa-cog::before {
+    content: "\f013";
+}
+
+.nav-menu {
+}
+
+/**/
+
+.div-for-reg {
+    display: flex;
+    margin: 30pt 0pt;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+    .div-for-reg h2 {
+        text-align: center;
+    }
+
+    .div-for-reg a {
+        text-align: center;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+
+    /*
+    .div-for-reg input {
+        display: flex;
+        text-align: center;
+        margin-top: 15px;
+        align-items: center;
+    }
+    */
+
+
+
+    .div-for-reg button {
+        width: 100%;
+        background-color: #6b6d70;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 0px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .div-for-reg button:hover {
+            background-color: #fff;
+            color: #4c4c4c;
+            border: 1px solid #4c4c4c;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*Тести*/
+
+.center-p {
+    text-align: center;
+}
+
+    /* Інші стилі, які вам потрібні */
