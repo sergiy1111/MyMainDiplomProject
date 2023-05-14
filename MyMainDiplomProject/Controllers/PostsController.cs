@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -48,11 +49,12 @@ namespace MyMainDiplomProject.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Store(PostViewModel model)
         {
@@ -60,8 +62,7 @@ namespace MyMainDiplomProject.Controllers
             {
                 var post = new Post
                 {
-                    UserId = "a84134c8-3136-483e-94d9-0a3128c93ef4", // зміни на користувача, який створив пост
-                    Text = model.Text,
+                    UserId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id), 
                     CreatedDateRime = DateTime.Now,
                     Files = new List<Files>(),
                     PostHashTags = new List<HashTags>()

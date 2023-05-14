@@ -1,42 +1,41 @@
 ﻿@model MyMainDiplomProject.Models.ViewModel.PostViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "CreatePost";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>Post</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<h1 class="div-for-reg">Створення посту</h1>
+<div class="div-for-reg">
+    <div class="div-for-reg">
+        <h2>Створення нового посту</h2>
+        <hr class="hr-style-for-create" />
         <form asp-action="Store">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
+                <label asp-for="Text" class="control-label align-label"></label>
+                <input asp-for="Text" class="form-control text-block" style="height: 300px; width: 700px;" />
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HashTags" class="control-label"></label>
+                <label asp-for="HashTags" class="control-label align-label"></label>
+                <button class="follow-button" style="width:50px;">+</button>
+                <button class="follow-button" style="width:50px;">-</button>
                 <input asp-for="HashTags" class="form-control" />
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">File</label>
+
+                <label class="control-label align-label">File</label>
+                <button class="follow-button" style="width:50px;">+</button>
+                <button class="follow-button" style="width:50px;">-</button>
                 <input type="File" class="form-control" />
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Створити пост" class="btn btn-primary follow-button" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

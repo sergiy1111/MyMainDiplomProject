@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\University\\Diploma\\Gr\\MyMainDiplomProject-main\\MyMainDiplomProject\\MyMainDiplomProject.csproj": {}
+    "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\MyMainDiplomProject.csproj": {}
   },
   "projects": {
-    "D:\\University\\Diploma\\Gr\\MyMainDiplomProject-main\\MyMainDiplomProject\\MyMainDiplomProject.csproj": {
+    "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\MyMainDiplomProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\Diploma\\Gr\\MyMainDiplomProject-main\\MyMainDiplomProject\\MyMainDiplomProject.csproj",
+        "projectUniqueName": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\MyMainDiplomProject.csproj",
         "projectName": "MyMainDiplomProject",
-        "projectPath": "D:\\University\\Diploma\\Gr\\MyMainDiplomProject-main\\MyMainDiplomProject\\MyMainDiplomProject.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\Diploma\\Gr\\MyMainDiplomProject-main\\MyMainDiplomProject\\obj\\",
+        "projectPath": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\MyMainDiplomProject.csproj",
+        "packagesPath": "C:\\Users\\home\\.nuget\\packages\\",
+        "outputPath": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Programs\\VisualStudio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\home\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

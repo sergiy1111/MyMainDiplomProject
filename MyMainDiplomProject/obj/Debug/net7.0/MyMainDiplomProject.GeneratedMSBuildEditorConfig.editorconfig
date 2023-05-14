@@ -9,89 +9,89 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyMainDiplomProject
 build_property.RootNamespace = MyMainDiplomProject
-build_property.ProjectDir = D:\University\Diploma\Gr\MyMainDiplomProject-main\MyMainDiplomProject\
+build_property.ProjectDir = H:\MyDiplom\MyMainDiplomProject\MyMainDiplomProject\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\University\Diploma\Gr\MyMainDiplomProject-main\MyMainDiplomProject
+build_property.MSBuildProjectDirectory = H:\MyDiplom\MyMainDiplomProject\MyMainDiplomProject
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/Account/Login.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/Account/Logout.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/Account/Register.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/_ViewImports.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Areas/Identity/Pages/_ViewStart.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Home/Index.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Home/Privacy.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Posts/Create.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Posts/Delete.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Posts/Details.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Posts/Edit.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Posts/Index.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Shared/Error.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Shared/_LoginPartial.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/_ViewImports.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/_ViewStart.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/University/Diploma/Gr/MyMainDiplomProject-main/MyMainDiplomProject/Views/Shared/_Layout.cshtml]
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6gi16gnav9

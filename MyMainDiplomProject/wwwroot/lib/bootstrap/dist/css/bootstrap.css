@@ -3992,10 +3992,11 @@ textarea.form-control-lg {
 }
 .navbar-nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  margin-right: 10px;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
