@@ -360,7 +360,7 @@ namespace MyMainDiplomProject.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -399,6 +399,52 @@ namespace MyMainDiplomProject.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("MyMainDiplomProject.Models.UserAdditionalInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Education")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ShowDescription")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ShowEducation")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ShowUserInterests")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ShowWorkPlase")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserAvatar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserInterests")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkPlase")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserAdditionalInfo");
                 });
 
             modelBuilder.Entity("HashTagsPost", b =>
@@ -510,10 +556,25 @@ namespace MyMainDiplomProject.Migrations
 
             modelBuilder.Entity("MyMainDiplomProject.Models.Likes", b =>
                 {
-                    b.HasOne("MyMainDiplomProject.Models.Post", null)
+                    b.HasOne("MyMainDiplomProject.Models.Post", "Post")
                         .WithMany("Likes")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.HasOne("MyMainDiplomProject.Areas.Identity.Data.MyMainDiplomProjectUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MyMainDiplomProject.Models.Post", b =>
+                {
                     b.HasOne("MyMainDiplomProject.Areas.Identity.Data.MyMainDiplomProjectUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -523,7 +584,7 @@ namespace MyMainDiplomProject.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyMainDiplomProject.Models.Post", b =>
+            modelBuilder.Entity("MyMainDiplomProject.Models.UserAdditionalInfo", b =>
                 {
                     b.HasOne("MyMainDiplomProject.Areas.Identity.Data.MyMainDiplomProjectUser", "User")
                         .WithMany()

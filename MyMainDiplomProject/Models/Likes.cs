@@ -9,9 +9,10 @@ namespace MyMainDiplomProject.Models
 
         [Key]
         public int Id { get; set; }
+        public int PostId { get; set; }
         public string UserId { get; set; }
         public DateTime CreateTime { get; set; }
+        public virtual Post Post { get; set; }
         public virtual MyMainDiplomProjectUser User { get; set; }
-
     }
 }

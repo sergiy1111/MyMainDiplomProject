@@ -1,0 +1,75 @@
+﻿@model MyMainDiplomProject.Models.UserAdditionalInfo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>UserAdditionalInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowDescription" /> @Html.DisplayNameFor(model => model.ShowDescription)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkPlase" class="control-label"></label>
+                <input asp-for="WorkPlase" class="form-control" />
+                <span asp-validation-for="WorkPlase" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowWorkPlase" /> @Html.DisplayNameFor(model => model.ShowWorkPlase)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserInterests" class="control-label"></label>
+                <input asp-for="UserInterests" class="form-control" />
+                <span asp-validation-for="UserInterests" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowUserInterests" /> @Html.DisplayNameFor(model => model.ShowUserInterests)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Education" class="control-label"></label>
+                <input asp-for="Education" class="form-control" />
+                <span asp-validation-for="Education" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ShowEducation" /> @Html.DisplayNameFor(model => model.ShowEducation)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

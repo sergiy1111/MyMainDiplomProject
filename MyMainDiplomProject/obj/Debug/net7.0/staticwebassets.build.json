@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rBw1XWQA3FMc73cHcvM5jLce5aGw4XR0OkqzeKAFU0g=",
+  "Hash": "VygASNGnns6KTbmj0aHPNlVGRb3j+0d6azZ7CxKaIZ8=",
   "Source": "MyMainDiplomProject",
   "BasePath": "_content/MyMainDiplomProject",
   "Mode": "Default",
@@ -1902,6 +1902,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+      "Identity": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\lib\\jquery.unobtrusive-ajax.js",
+      "SourceId": "MyMainDiplomProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\",
+      "BasePath": "_content/MyMainDiplomProject",
+      "RelativePath": "lib/jquery.unobtrusive-ajax.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery.unobtrusive-ajax.js"
+    },
+    {
+      "Identity": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\lib\\jquery.unobtrusive-ajax.min.js",
+      "SourceId": "MyMainDiplomProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\",
+      "BasePath": "_content/MyMainDiplomProject",
+      "RelativePath": "lib/jquery.unobtrusive-ajax.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery.unobtrusive-ajax.min.js"
     },
     {
       "Identity": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\lib\\jquery\\dist\\jquery.js",

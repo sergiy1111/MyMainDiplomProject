@@ -11,6 +11,7 @@ using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
 
+
 namespace MyMainDiplomProject.Controllers
 {
     public class PostsController : Controller
@@ -197,5 +198,20 @@ namespace MyMainDiplomProject.Controllers
         {
           return (_context.Posts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public ActionResult BigPost(int Id)
+        {
+            return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Where(i => i.Id == Id).FirstOrDefault());
+        }
+
+        public IActionResult UserProfile(string UserName)
+        {
+            var user = _context.Users.Where(i => i.Id == UserName);
+            int id = 1;
+            //string UserId = Convert.ToString(_context.Users.Where(i => i.Email == UserName).FirstOrDefault().Id);
+            //var myMainDiplomProjectDbContext = _context.Posts.Include(i => i.PostHashTags).Include(i => i.User).Where(i => i.User.Id == UserId).FirstOrDefault();
+            return View(/*myMainDiplomProjectDbContext*/);
+        }
     }
 }
+

@@ -233,6 +233,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
+      "Id": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\lib\\jquery.unobtrusive-ajax.js",
+      "PackagePath": "staticwebassets\\lib\\jquery.unobtrusive-ajax.js"
+    },
+    {
+      "Id": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\lib\\jquery.unobtrusive-ajax.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery.unobtrusive-ajax.min.js"
+    },
+    {
       "Id": "H:\\MyDiplom\\MyMainDiplomProject\\MyMainDiplomProject\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },

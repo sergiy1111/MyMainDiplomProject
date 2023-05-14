@@ -17,6 +17,7 @@ namespace MyMainDiplomProject.Models
         public bool ShowUserInterests { get; set; }
         public string? Education { get; set; }
         public bool ShowEducation { get; set; }
+        public string? UserAvatar { get; set; }
 
         public virtual MyMainDiplomProjectUser User { get; set; }
     }

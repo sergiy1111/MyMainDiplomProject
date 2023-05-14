@@ -27,7 +27,7 @@
         <nav>
             <ul>
                 <li><a href="~/Home/Index"><i class="fa fa-home"></i></a></li>
-                <li><a href="~/UserAdditionalInfo/Users"><i class="fa fa-users"></i></a></li>
+                <li><a href="~/Posts/UserProfile/@User.Identity.Name"><i class="fa fa-users"></i></a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li><a href="~/UserAdditionalInfo/Profile"><i class="fa fa-user"></i></a></li>
@@ -52,6 +52,24 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script>
+    
+    function PopUpShow() {
+        $("#PopUp").fadeIn();
+        $("body").attr("style", "overflow-y: hidden;");
+    }
+
+    function PopUpHide() {
+        $("#PopUp").fadeOut();
+        $("body").attr("style", "overflow-y: scroll;");
+    }
+</script>

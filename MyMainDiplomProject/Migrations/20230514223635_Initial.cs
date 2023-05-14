@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyMainDiplomProject.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -220,6 +220,34 @@ namespace MyMainDiplomProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserAdditionalInfo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShowDescription = table.Column<bool>(type: "bit", nullable: false),
+                    WorkPlase = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShowWorkPlase = table.Column<bool>(type: "bit", nullable: false),
+                    UserInterests = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShowUserInterests = table.Column<bool>(type: "bit", nullable: false),
+                    Education = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShowEducation = table.Column<bool>(type: "bit", nullable: false),
+                    UserAvatar = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserAdditionalInfo", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserAdditionalInfo_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Comments",
                 columns: table => new
                 {
@@ -296,9 +324,9 @@ namespace MyMainDiplomProject.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    PostId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PostId = table.Column<int>(type: "int", nullable: true)
+                    CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -313,7 +341,8 @@ namespace MyMainDiplomProject.Migrations
                         name: "FK_Likes_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -399,6 +428,11 @@ namespace MyMainDiplomProject.Migrations
                 name: "IX_Posts_UserId",
                 table: "Posts",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAdditionalInfo_UserId",
+                table: "UserAdditionalInfo",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -433,6 +467,9 @@ namespace MyMainDiplomProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "Likes");
+
+            migrationBuilder.DropTable(
+                name: "UserAdditionalInfo");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

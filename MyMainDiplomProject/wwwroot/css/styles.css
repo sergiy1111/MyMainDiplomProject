@@ -251,10 +251,14 @@ nav {
     border: 1px solid black;
     border-radius: 5px;
     padding: 10px;
-    width: 300px;
+    width: 271px;
     float: right;
     border-radius: 10px;
-    font-size: 20px
+    font-size: 20px;
+    right: 0;
+    position: absolute;
+    margin-right: 300px;
+    margin-left: 20px;
 }
 
     .search-filter h3, h2 {
@@ -442,16 +446,16 @@ nav {
     padding: 10px;
     margin-bottom: 20px;
     background-color: #fff;
-    position: absolute;
-    left: 45%;
-    right: 18%;
-    transform: translateX(-50%);
+    /* position: absolute; */
+    /* left: 45%; */
+    /* right: 18%; */
+    transform: translateX(17%);
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     margin-right: 10px;
+    width: 900px;
 }
-
 .post-big-page {
     display: flex;
     flex-direction: column;
@@ -520,7 +524,6 @@ nav {
 }
 
 .post-image {
-    width: 100%;
     height: auto;
     margin-top: 10px;
     display: block;
@@ -839,4 +842,11 @@ nav {
 .hr-style-for-create{
     width: 100%;
     margin-bottom: 20px;
+}
+.my-navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
 }
