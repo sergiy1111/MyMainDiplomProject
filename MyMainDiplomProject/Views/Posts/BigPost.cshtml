@@ -27,7 +27,7 @@
 
     <div class="post-content">
         <div class="post-text">
-            <p>@Model.Text</p>
+            <p style="color: black;">@Model.Text</p>
         </div>
         @if (Model.Files.Any())
         {
@@ -39,50 +39,44 @@
             <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
         </button>
 
-        <span class="heart-count">37</span>
+        <span class="heart-count" style="color: black;">37</span>
         <button class="post-button">
             <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
 
         </button>
-        <span class="comment-count">4</span>
+        <span class="comment-count" style="color: black;">0</span>
+        <hr />
     </div>
 
-
-
-
-    <div>
-        <div class="comment-block">
-            <div class="user-info">
-                <div class="avatar">
-                    <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
-                </div>
-                <div class="user-details">
-                    <h4>MyUserName</h4>
-                    <p class="comment-date">01.01.2023</p>
-                </div>
-            </div>
-            <hr />
-            <div class="comment-content">
-                <p>Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...</p>
-            </div>
+    <div class="post-comments">
+        <div class="comment-input-block">
+            <input type="text" placeholder="Введіть коментар">
+            <button class="follow-button" id="createCommentButton">Створити коментар</button>
         </div>
+    </div>
+    <hr />
 
+    <div class ="post-stats"></div>
 
-
-        <div class="comment-block">
-            <div class="user-info">
-                <div class="avatar">
-                    <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
+    <div style="margin-top: 20px;">
+        <div>
+        @foreach (var item in Model.Comments)
+        {
+            <div class="comment-block">
+                <div class="user-info">
+                    <div class="avatar">
+                        <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
+                    </div>
+                    <div class="user-details">
+                        <h4 style="color: black;">@item.User.userNikName</h4>
+                        <p class="comment-date" style="color: black;">@item.CreateDate</p>
+                    </div>
                 </div>
-                <div class="user-details">
-                    <h4>MyUserName</h4>
-                    <p class="comment-date">01.01.2023</p>
+                    <hr style="width: 100%; color: #ccc;">
+                <div class="comment-content">
+                    <p style="color: black; padding: 10px;">@item.Text</p>
                 </div>
             </div>
-            <hr />
-            <div class="comment-content">
-                <p>Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...Текст коментаря...</p>
-            </div>
-        </div>
+        }
     </div>
 </div>

@@ -12,8 +12,8 @@ using MyMainDiplomProject.Data;
 namespace MyMainDiplomProject.Migrations
 {
     [DbContext(typeof(MyMainDiplomProjectDbContext))]
-    [Migration("20230514230103_Initial3")]
-    partial class Initial3
+    [Migration("20230515085127_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

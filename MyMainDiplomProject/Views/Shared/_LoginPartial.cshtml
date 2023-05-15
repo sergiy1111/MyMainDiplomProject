@@ -4,7 +4,7 @@
 @inject SignInManager<MyMainDiplomProjectUser> SignInManager
 @inject UserManager<MyMainDiplomProjectUser> UserManager
 
-<ul class="my-navbar-nav">
+<ul class="my-navbar-nav" style="z-index: 999999">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">

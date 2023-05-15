@@ -42,7 +42,6 @@
 
 @foreach (var post in Model)
 {
-    
     <div class="post-main-page">
         <div class="user-info1">
             <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
@@ -66,18 +65,18 @@
             }
          </div>
 
-
         <div class="post-content">
             <div class="post-text">
                 <p>@post.Text</p>
             </div>
             @if (post.Files.Any())
             {
-                <a  data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/Posts/BigPost/@post.Id">
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/Posts/BigPost/@post.Id">
                 <img class="post-image" src="@Url.Content(post.Files.First().FileName)" alt="Post image" />
                 </a>
             }
         </div>
+
         <div class="post-stats">
             <button class="post-button">
                 <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
@@ -88,9 +87,11 @@
                 <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
                 
             </button>
-            <span class="comment-count">4</span>
+
+            <span class="comment-count">0</span>
         </div>
     </div>
+  
 }
 
 <div id="PopUp" style=" background: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: fixed  ; top: 0; left: 0; overflow-y: scroll; display: none; z-index: 9999999">

@@ -63,7 +63,8 @@ namespace MyMainDiplomProject.Controllers
             {
                 var post = new Post
                 {
-                    UserId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id), 
+                    UserId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id),
+                    Text = model.Text,
                     CreatedDateRime = DateTime.Now,
                     Files = new List<Files>(),
                     PostHashTags = new List<HashTags>()
@@ -201,7 +202,7 @@ namespace MyMainDiplomProject.Controllers
 
         public ActionResult BigPost(int Id)
         {
-            return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Where(i => i.Id == Id).FirstOrDefault());
+            return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.Id == Id).FirstOrDefault());
         }
 
         public IActionResult UserProfile(string UserName)
