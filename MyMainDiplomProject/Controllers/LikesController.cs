@@ -21,7 +21,7 @@ namespace MyMainDiplomProject.Controllers
             _context = context;
         }
         [Authorize]
-        public ActionResult AddLike(int Id)
+        public async Task<IActionResult> AddLike(int Id)
         {
             string UserId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id);
             

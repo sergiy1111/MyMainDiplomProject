@@ -189,10 +189,10 @@ namespace MyMainDiplomProject.Controllers
             var post = await _context.Posts.FindAsync(id);
             if (post != null)
             {
-                _context.Posts.Remove(post);
+                //_context.Posts.Remove(post);
             }
             
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
