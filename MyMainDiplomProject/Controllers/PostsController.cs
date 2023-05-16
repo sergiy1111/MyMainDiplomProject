@@ -55,6 +55,7 @@ namespace MyMainDiplomProject.Controllers
         {
             return View();
         }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Store(PostViewModel model)
