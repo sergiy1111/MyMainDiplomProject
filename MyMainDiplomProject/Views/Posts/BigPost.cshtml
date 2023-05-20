@@ -47,15 +47,16 @@
         <span class="comment-count" style="color: black;">0</span>
         <hr />
     </div>
-
-    <div class="post-comments">
-        <div class="comment-input-block">
-            <input type="text" placeholder="Введіть коментар">
-            <button class="follow-button" id="createCommentButton">Створити коментар</button>
+    <form id="commentForm" asp-action="Create" asp-controller="Comments">
+        <div class="post-comments">
+            <div class="comment-input-block">
+                <input type="text" name="model.Text" placeholder="Введіть коментар">
+                <input type="hidden" name="postId" value="@Model.Id" />
+                <input type="submit" value="Створити коментар" class="btn btn-primary follow-button" />
+            </div>
         </div>
-    </div>
-    <hr />
-
+        <hr />
+    </form>
     <div class ="post-stats"></div>
 
     <div style="margin-top: 20px;">
