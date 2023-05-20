@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
@@ -21,22 +15,6 @@ namespace MyMainDiplomProject.Controllers
             _context = context;
         }
 
-        /*
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Create(CommentViewModel model)
-        {
-            Comments NewComment = new Comments
-            {
-                UserId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id),
-                Text = model.Text,
-            };
-
-            _context.Add(NewComment);
-            _context.SaveChangesAsync();
-            return Ok();
-        }
-        */
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CommentViewModel model, int postId)
@@ -53,6 +31,17 @@ namespace MyMainDiplomProject.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult GetComments(int postId)
+        {
+            // Отримати список коментарів за допомогою postId
+            var comments = _context.Comments.Where(c => c.PostId == postId).ToList();
+
+            // Повернути часткове представлення з оновленим списком коментарів
+            return PartialView("_CommentsPartial", comments);
+        }
+
 
     }
 }
