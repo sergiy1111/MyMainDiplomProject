@@ -12,8 +12,8 @@ using MyMainDiplomProject.Data;
 namespace MyMainDiplomProject.Migrations
 {
     [DbContext(typeof(MyMainDiplomProjectDbContext))]
-    [Migration("20230515085127_initial")]
-    partial class initial
+    [Migration("20230520171009_1")]
+    partial class _1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,7 +263,7 @@ namespace MyMainDiplomProject.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
@@ -518,15 +518,19 @@ namespace MyMainDiplomProject.Migrations
 
             modelBuilder.Entity("MyMainDiplomProject.Models.Comments", b =>
                 {
-                    b.HasOne("MyMainDiplomProject.Models.Post", null)
+                    b.HasOne("MyMainDiplomProject.Models.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MyMainDiplomProject.Areas.Identity.Data.MyMainDiplomProjectUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Post");
 
                     b.Navigation("User");
                 });

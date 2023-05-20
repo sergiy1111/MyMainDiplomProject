@@ -48,13 +48,17 @@
         <hr />
     </div>
 
-    <div class="post-comments">
-        <div class="comment-input-block">
-            <input type="text" placeholder="Введіть коментар">
-            <button class="follow-button" id="createCommentButton">Створити коментар</button>
+    <form id="commentForm" asp-action="Create" asp-controller="Comments">
+        <div class="post-comments">
+            <div class="comment-input-block">
+                <input type="text" name="model.Text" placeholder="Введіть коментар">
+                <input type="hidden" name="postId" value="@Model.Id" />
+                <input type="submit" value="Створити коментар" class="btn btn-primary follow-button" />
+            </div>
         </div>
-    </div>
-    <hr />
+        <hr />
+    </form>
+
 
     <div class ="post-stats"></div>
 
@@ -80,3 +84,23 @@
         }
     </div>
 </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#commentForm').submit(function (e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: '@Url.Action("Create", "Comments")',
+                    type: 'POST',
+                    data: formData,
+                    success: function () {
+                    },
+                    error: function () {
+                    }
+                });
+            });
+        });
+    </script>
