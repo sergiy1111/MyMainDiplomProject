@@ -34,17 +34,16 @@
             <img class="post-image" src="@Url.Content(Model.Files.First().FileName)" alt="Post image" />
         }
     </div>
+
     <div class="post-stats">
-        <button class="post-button">
+        <button class="post-button" onClick="addLike(@Model.Id)">
             <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
         </button>
-
-        <span class="heart-count" style="color: black;">37</span>
+        <span class="heart-count" id="likeCount" style="color: black;">@(Model.Likes?.Count ?? 0)</span>
         <button class="post-button">
             <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
-
         </button>
-        <span class="comment-count" style="color: black;">0</span>
+        <span class="comment-count" style="color: black;">@(Model.Comments?.Count ?? 0)</span>
         <hr />
     </div>
 
@@ -99,11 +98,9 @@
                 type: 'POST',
                 data: formData,
                 success: function () {
-                    // Оновити список коментарів
                     updateComments();
                 },
                 error: function () {
-                    // Обробка помилки при створенні коментаря
                 }
             });
         });
@@ -117,13 +114,36 @@
                     $('#commentsContainer').html(data);
                 },
                 error: function () {
-                    // Обробка помилки при отриманні коментарів
                 }
             });
         }
 
-        // Оновити список коментарів при завантаженні сторінки
+        function addLike(postId) {
+            $.ajax({
+                url: '@Url.Action("AddLike", "Likes")',
+                type: 'POST',
+                data: { Id: postId },
+                success: function () {
+                    updateLikes();
+                },
+                error: function () {
+                }
+            });
+        }
+
+        function updateLikes() {
+            $.ajax({
+                url: '@Url.Action("GetPostLikes", "Likes")',
+                type: 'GET',
+                data: { postId: '@Model.Id' },
+                success: function (data) {
+                    $('#likeCount').text(data);
+                },
+                error: function () {
+                }
+            });
+        }
+
         updateComments();
     });
 </script>
-

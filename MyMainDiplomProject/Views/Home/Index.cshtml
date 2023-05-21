@@ -78,17 +78,28 @@
         </div>
 
         <div class="post-stats">
-            <a href="@Url.Action("AddLike", "Likes", new { id = post.Id })" class="post-button">
+            <button class="post-button" onclick="addLike(@post.Id)">
                 <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
-            </a>
-
-            <span class="heart-count">37</span>
+            </button>
+            @if (post.Likes != null)
+            {
+                <span class="heart-count">@post.Likes.Count</span>
+            }
+            else
+            {
+                <span class="heart-count">0</span>
+            }
             <button class="post-button">
                 <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
-                
             </button>
-
-            <span class="comment-count">0</span>
+            @if (post.Comments != null)
+            {
+                <span class="heart-count">@post.Comments.Count</span>
+            }
+            else
+            {
+                <span class="comment-count">0</span>
+            }
         </div>
     </div>
   
@@ -97,11 +108,26 @@
 <div id="PopUp" style=" background: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: fixed  ; top: 0; left: 0; overflow-y: scroll; display: none; z-index: 9999999">
     <div class="container mt-5">
         <div class="row">
-            <div class="col-12 pt-4 pb-5 mt-5" id="PopUpContent" style="color: white;">
+            <div class="col-12 pt-4 pb-5 mt-5" id="PopUpContent" style="color: black;">
             </div>
             <button class="col-1 offset-9 btn btn-primary" style="position: fixed; top: 10%;" onclick="PopUpHide();">✖</button>
         </div>
     </div>
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addLike(postId) {
+        $.ajax({
+            url: '@Url.Action("AddLike", "Likes")',
+            type: 'POST',
+            data: { Id: postId },
+            success: function () {
+                // Оновлення даних на сторінці, якщо потрібно
+            },
+            error: function () {
+                // Обробка помилки, якщо потрібно
+            }
+        });
+    }
+</script>

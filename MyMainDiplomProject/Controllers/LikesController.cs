@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.Host;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 
@@ -25,8 +26,8 @@ namespace MyMainDiplomProject.Controllers
         public ActionResult AddLike(int Id)
         {
             string UserId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id);
-            
-            if (_context.Likes.Where(i => i.UserId == UserId && i.PostId == Id) != null)
+          
+            if (_context.Likes.Where(i => i.UserId == UserId && i.PostId == Id).IsNullOrEmpty())
             {
                 Likes NewLike = new Likes
                 {
@@ -39,9 +40,8 @@ namespace MyMainDiplomProject.Controllers
             }
             else
             {
-                int LikeId = _context.Likes.Where(i => i.UserId == UserId && i.PostId == Id).FirstOrDefault().Id;
-                
-                _context.Likes.Remove((Likes)_context.Likes.Where(i => i.Id == LikeId));
+                Likes existingLike = _context.Likes.FirstOrDefault(i => i.UserId == UserId && i.PostId == Id);
+                _context.Likes.Remove(existingLike);
             }
             _context.SaveChangesAsync();   
             return Ok();
