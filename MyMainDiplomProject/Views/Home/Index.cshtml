@@ -78,9 +78,9 @@
         </div>
 
         <div class="post-stats">
-            <button class="post-button">
+            <a href="@Url.Action("AddLike", "Likes", new { id = post.Id })" class="post-button">
                 <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
-            </button>
+            </a>
 
             <span class="heart-count">37</span>
             <button class="post-button">

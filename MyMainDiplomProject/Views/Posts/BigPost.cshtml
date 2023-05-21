@@ -60,6 +60,7 @@
     </form>
 
 
+
     <div class ="post-stats"></div>
 
     <div style="margin-top: 20px;">
@@ -82,45 +83,47 @@
                 </div>
             </div>
         }
+        </div>
     </div>
 </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#commentForm').submit(function (e) {
+            e.preventDefault();
+            var formData = $(this).serialize();
 
-        $(document).ready(function () {
-            $('#commentForm').submit(function (e) {
-                e.preventDefault();
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    url: '@Url.Action("Create", "Comments")',
-                    type: 'POST',
-                    data: formData,
-                    success: function () {
-                        updateComments();
-                        //window.location.href = '/Posts/BigPost/' + Model.Id;
-                    },
-                    error: function () {
-                    }
-                });
+            $.ajax({
+                url: '@Url.Action("Create", "Comments")',
+                type: 'POST',
+                data: formData,
+                success: function () {
+                    // Оновити список коментарів
+                    updateComments();
+                },
+                error: function () {
+                    // Обробка помилки при створенні коментаря
+                }
             });
+        });
 
-            function updateComments() {
-                $.ajax({
-                    url: '@Url.Action("GetComments", "Comments")',
-                    type: 'GET',
-                    data: { postId: '@Model.Id' },
-                    success: function (data) {
-                        $('#commentsContainer').html(data);
-                    },
-                    error: function () {
-                        // Обробка помилки при отриманні коментарів
-                    }
-                });
-            }
+        function updateComments() {
+            $.ajax({
+                url: '@Url.Action("GetComments", "Comments")',
+                type: 'GET',
+                data: { postId: '@Model.Id' },
+                success: function (data) {
+                    $('#commentsContainer').html(data);
+                },
+                error: function () {
+                    // Обробка помилки при отриманні коментарів
+                }
+            });
+        }
 
-            // Оновити список коментарів при завантаженні сторінки
-            updateComments();
-    </script>
+        // Оновити список коментарів при завантаженні сторінки
+        updateComments();
+    });
+</script>
+

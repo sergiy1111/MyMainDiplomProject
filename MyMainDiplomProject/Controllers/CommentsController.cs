@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
@@ -36,7 +37,10 @@ namespace MyMainDiplomProject.Controllers
         public IActionResult GetComments(int postId)
         {
             // Отримати список коментарів за допомогою postId
-            var comments = _context.Comments.Where(c => c.PostId == postId).ToList();
+            List<Comments>? comments = _context.Comments
+               .Include(c => c.User)
+               .Where(c => c.PostId == postId)
+               .ToList();
 
             // Повернути часткове представлення з оновленим списком коментарів
             return PartialView("_CommentsPartial", comments);

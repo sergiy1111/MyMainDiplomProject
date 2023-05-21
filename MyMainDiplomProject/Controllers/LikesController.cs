@@ -20,6 +20,7 @@ namespace MyMainDiplomProject.Controllers
         {
             _context = context;
         }
+
         [Authorize]
         public ActionResult AddLike(int Id)
         {
@@ -43,7 +44,7 @@ namespace MyMainDiplomProject.Controllers
                 _context.Likes.Remove((Likes)_context.Likes.Where(i => i.Id == LikeId));
             }
             _context.SaveChangesAsync();   
-            return View();
+            return Ok();
            
         }
 

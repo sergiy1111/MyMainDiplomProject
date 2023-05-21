@@ -98,7 +98,7 @@ namespace MyMainDiplomProject.Controllers
                 _context.Posts.Add(post);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
 
             return View("Create", model);

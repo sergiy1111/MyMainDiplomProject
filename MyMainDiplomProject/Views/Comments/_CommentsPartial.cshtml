@@ -3,6 +3,18 @@
 @foreach (var comment in Model)
 {
     <div class="comment-block">
-        <!-- Блок коментаря -->
+        <div class="user-info">
+            <div class="avatar">
+                <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
+            </div>
+            <div class="user-details">
+                <h4 style="color: black;">@comment.User.userNikName</h4>
+                <p class="comment-date" style="color: black;">@comment.CreateDate</p>
+            </div>
+        </div>
+        <hr style="width: 100%; color: #ccc;">
+        <div class="comment-content">
+            <p style="color: black; padding: 10px;">@comment.Text</p>
+        </div>
     </div>
 }
