@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic.FileIO;
+using MyMainDiplomProject.Areas.Identity.Data;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
-
+using MyMainDiplomProject.Models.ViewModels;
 
 namespace MyMainDiplomProject.Controllers
 {
@@ -26,8 +27,8 @@ namespace MyMainDiplomProject.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            var myMainDiplomProjectDbContext = _context.Posts.Include(p => p.User);
-            return View(await myMainDiplomProjectDbContext.ToListAsync());
+            var myMainDiplomProjectDbContext = _context.Posts.Include(p => p.User).OrderByDescending(i => i.CreatedDateRime).ToListAsync();
+            return View(await myMainDiplomProjectDbContext);
         }
 
         // GET: Posts/Details/5
@@ -80,12 +81,10 @@ namespace MyMainDiplomProject.Controllers
                             post.PostHashTags.Add(_context.HashTags.Where(i => i.Name == tag).FirstOrDefault());
                        }
                        else
-                        {
+                       {
                             post.PostHashTags.Add(new HashTags() { Name = tag });
-                        }
+                       }
                     }
-
-
                 }
 
                 var file = new Files
@@ -103,6 +102,42 @@ namespace MyMainDiplomProject.Controllers
 
             return View("Create", model);
         }
+
+        public async Task<IActionResult> UserProfile(string Id)
+        {
+            var myMainDiplomProjectDbContext = _context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.UserId == Id).FirstOrDefault();
+
+            UserProfileViewModel model = new UserProfileViewModel
+            {
+                User = _context.Users.Where(i => i.Id == _context.Users.Where(i => i.Id == Id).FirstOrDefault().Id).FirstOrDefault(),
+                Posts = _context.Posts.Include(i => i.Files).Include(i => i.Likes).Include(i => i.PostHashTags).Include(i => i.Comments).Where(i => i.UserId == _context.Users.Where(i => i.Id == Id).FirstOrDefault().Id).ToList(),
+                UserAdditionalInfo = _context.UserAdditionalInfo.Where(i => i.UserId == _context.Users.Where(i => i.Id == Id).FirstOrDefault().Id).FirstOrDefault(),
+                FollowLists = _context.FollowLists.Where(i => i.UserId == Id).ToList()
+            };
+            return View("UserProfile", model);
+        }
+
+        public async Task<IActionResult> MyUserProfile()
+        {
+            string Id = _context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id;
+
+            UserProfileViewModel model = new UserProfileViewModel
+            {
+                User = _context.Users.Where(i => i.Id == Id).FirstOrDefault(),
+                Posts = _context.Posts.Include(i => i.Files).Include(i => i.Likes).Include(i => i.PostHashTags).Include(i => i.Comments).Where(i => i.UserId == Id).ToList(),
+                UserAdditionalInfo = _context.UserAdditionalInfo.Where(i => i.UserId == Id).FirstOrDefault(),
+                FollowLists = _context.FollowLists.Where(i => i.UserId == Id).ToList()
+            };
+            return View("UserProfile", model);
+
+        }
+        
+
+
+
+
+
+
 
 
         // GET: Posts/Edit/5
@@ -206,14 +241,6 @@ namespace MyMainDiplomProject.Controllers
             return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.Id == Id).FirstOrDefault());
         }
 
-        public IActionResult UserProfile(string UserName)
-        {
-            var user = _context.Users.Where(i => i.Id == UserName);
-            int id = 1;
-            //string UserId = Convert.ToString(_context.Users.Where(i => i.Email == UserName).FirstOrDefault().Id);
-            //var myMainDiplomProjectDbContext = _context.Posts.Include(i => i.PostHashTags).Include(i => i.User).Where(i => i.User.Id == UserId).FirstOrDefault();
-            return View(/*myMainDiplomProjectDbContext*/);
-        }
     }
 }
 

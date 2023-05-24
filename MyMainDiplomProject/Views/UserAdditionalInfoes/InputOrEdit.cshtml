@@ -1,0 +1,49 @@
+﻿@model MyMainDiplomProject.Models.ViewModels.ChangeSeatingsViewModel
+
+<div>
+    @if(Model.Id == 1)
+    {
+        <label for="description">Опис:</label>
+        <input type="text" id="description" name="UserAdditional.Description" />
+
+        <label for="showDescription">Показувати опис:</label>
+        <input type="checkbox" id="showDescription" name="UserAdditional.ShowDescription" value="true" />
+
+    }
+
+    @if (Model.Id == 2)
+    {
+        <label for="workPlace">Місце роботи:</label>
+        <input type="text" id="workPlace" name="UserAdditional.WorkPlace" />
+
+        <label for="showWorkPlace">Показувати місце роботи:</label>
+        <input type="checkbox" id="showWorkPlace" name="UserAdditional.ShowWorkPlace" value="true" />
+    }
+    
+    @if (Model.Id == 3)
+    {
+        <label for="userInterests">Інтереси користувача:</label>
+        <input type="text" id="userInterests" name="UserAdditional.UserInterests" />
+
+        <label for="showUserInterests">Показувати інтереси користувача:</label>
+        <input type="checkbox" id="showUserInterests" name="UserAdditional.ShowUserInterests" value="true" />
+    }
+
+    @if (Model.Id == 4)
+    {
+        <label for="education">Освіта:</label>
+        <input type="text" id="education" name="UserAdditional.Education" />
+
+        <label for="showEducation">Показувати освіту:</label>
+        <input type="checkbox" id="showEducation" name="UserAdditional.ShowEducation" value="true" />
+    }
+
+
+    @if (Model.Id == 5)
+    {
+        <label for="userAvatar">Аватар користувача:</label>
+        <input type="file" id="userAvatar" name="UserAdditional.UserAvatar" accept="image/*" />
+    }
+
+    <button type="submit">Зберегти</button>
+</div>

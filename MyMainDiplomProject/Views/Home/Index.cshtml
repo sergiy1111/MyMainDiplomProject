@@ -15,15 +15,15 @@
         <label for="name">Ім'я користувача:</label>
         <input type="text" id="name" name="name">
 
-        <label for="name">Хештег:</label>
-        <input type="text" id="name" name="name">
+        <label for="hashtag">Хештег:</label>
+        <input type="text" id="hashtag" name="hashtag">
 
         <select id="user-type" name="user-type">
             <option value="friend">Підписки</option>
             <option value="all">Усі користувачі</option>
         </select>
 
-        <button type="submit">Пошук</button>
+        <button type="submit" onclick="searchPosts()">Пошук</button>
     </div>
 
     <div class="post-content">
@@ -40,70 +40,71 @@
     </div>
 </div>
 
-@foreach (var post in Model)
-{
-    <div class="post-main-page">
-        <div class="user-info1">
-            <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
-            <div class="user-details1">
-                <a href="~/Posts/UserProfile/@post.User.userNikName">
-                    <div class="user-name1">@post.User.userNikName</div>
-                </a>
-                <div class="post-date">@post.CreatedDateRime</div>
+<div id="postContainer">
+    @foreach (var post in Model)
+    {
+        <div class="post-main-page">
+            <div class="user-info1">
+                <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
+                <div class="user-details1">
+                    <a href="~/Posts/UserProfile/@post.User.Id">
+                        <div class="user-name1">@post.User.userNikName</div>
+                    </a>
+                    <div class="post-date">@post.CreatedDateRime</div>
+                </div>
+                <img class="post-button" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_settings-48.png" alt="Post button">
             </div>
-            <img class="post-button" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_settings-48.png" alt="Post button">
-        </div>
 
-        <div class="post-hestag">
-        @foreach (var item in post.PostHashTags)
-            {
-                <a href="">
-                    <label>
-                        @item.Name
-                    </label>
-                </a>
-            }
-         </div>
-
-        <div class="post-content">
-            <div class="post-text">
-                <p>@post.Text</p>
+            <div class="post-hestag">
+                @foreach (var item in post.PostHashTags)
+                {
+                    <a href="">
+                        <label>
+                            @item.Name
+                        </label>
+                    </a>
+                }
             </div>
-            @if (post.Files.Any())
-            {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/Posts/BigPost/@post.Id">
-                <img class="post-image" src="@Url.Content(post.Files.First().FileName)" alt="Post image" />
-                </a>
-            }
-        </div>
 
-        <div class="post-stats">
-            <button class="post-button" onclick="addLike(@post.Id)">
-                <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
-            </button>
-            @if (post.Likes != null)
-            {
-                <span class="heart-count">@post.Likes.Count</span>
-            }
-            else
-            {
-                <span class="heart-count">0</span>
-            }
-            <button class="post-button">
-                <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
-            </button>
-            @if (post.Comments != null)
-            {
-                <span class="heart-count">@post.Comments.Count</span>
-            }
-            else
-            {
-                <span class="comment-count">0</span>
-            }
+            <div class="post-content">
+                <div class="post-text">
+                    <p>@post.Text</p>
+                </div>
+                @if (post.Files.Any())
+                {
+                    <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/Posts/BigPost/@post.Id">
+                        <img class="post-image" src="@Url.Content(post.Files.First().FileName)" alt="Post image" />
+                    </a>
+                }
+            </div>
+
+            <div class="post-stats">
+                <button class="post-button" onclick="addLike(@post.Id)">
+                    <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
+                </button>
+                @if (post.Likes != null)
+                {
+                    <span class="heart-count">@post.Likes.Count</span>
+                }
+                else
+                {
+                    <span class="heart-count">0</span>
+                }
+                <button class="post-button">
+                    <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
+                </button>
+                @if (post.Comments != null)
+                {
+                    <span class="heart-count">@post.Comments.Count</span>
+                }
+                else
+                {
+                    <span class="comment-count">0</span>
+                }
+            </div>
         </div>
-    </div>
-  
-}
+    }
+</div>
 
 <div id="PopUp" style=" background: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: fixed  ; top: 0; left: 0; overflow-y: scroll; display: none; z-index: 9999999">
     <div class="container mt-5">
@@ -124,6 +125,24 @@
             data: { Id: postId },
             success: function () {
                 // Оновлення даних на сторінці, якщо потрібно
+            },
+            error: function () {
+                // Обробка помилки, якщо потрібно
+            }
+        });
+    }
+
+    function searchPosts() {
+        var name = $('#name').val();
+        var hashtag = $('#hashtag').val();
+        var userType = $('#user-type').val();
+
+        $.ajax({
+            url: '@Url.Action("SearchPosts", "Posts")',
+            type: 'POST',
+            data: { name: name, hashtag: hashtag, userType: userType },
+            success: function (data) {
+                $('#postContainer').html(data);
             },
             error: function () {
                 // Обробка помилки, якщо потрібно

@@ -1,0 +1,64 @@
+﻿@model List<UserAdditionalInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Пошук людей</title>
+</head>
+
+<body>
+
+    <div class="panel">
+        Пошук підписників
+    </div>
+
+    <div class="search-filter">
+        <h3>Пошук</h3>
+        <hr />
+        <form>
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="followers-search">Кількість підписників від (min):</label>
+            <input type="number" id="followers-search" name="followers-search" min="0">
+
+            <label for="followers-search">Кількість підписників до (max):</label>
+            <input type="number" id="followers-search" name="followers-search" min="0">
+
+            <select id="num-users" name="num-users">
+                <option value="all">Усі користувачі</option>
+                <option value="verified">Верифіковані</option>
+                <option value="unverified">Неверифіковані</option>
+            </select>
+
+            <select id="user-type" name="user-type">
+                <option value="friend">Друзі</option>
+                <option value="all">Усі користувачі</option>
+            </select>
+
+            <button type="submit">Пошук</button>
+        </form>
+    </div>
+
+    <div>
+        @foreach (var item in Model)
+        {
+            <div class="user-block">
+                <img class="user-image" src="@item.UserAvatar" alt="User profile picture">
+                <div class="user-info">
+                    <a href="/Posts/UserProfile/@item.User.Id">
+                        <div class="user-name">@item.User.userNikName</div>
+                    </a>
+                    <div class="user-followers-count">Дата реєстрації: @item.User.registerDate</div>
+                </div>
+                <button class="follow-button">Підписатись</button>
+            </div>
+        }
+    </div>
+
+
+
+</body>

@@ -1,9 +1,4 @@
-﻿@model IEnumerable<MyMainDiplomProject.Models.Post>
-
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model MyMainDiplomProject.Models.ViewModels.UserProfileViewModel
 
 <head>
     <title>Профіль користувача</title>
@@ -19,78 +14,170 @@
             <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
         </div>
         <div class="user-details">
-            <h2>Історик Микола</h2>
-            <p>Кількість підписників: 8</p>
+            <h2>@Model.User.userNikName</h2>
+
+            @if (Model.FollowLists != null)
+            {
+                <p>Кількість підписників: @Model.FollowLists.Count()</p>
+            }
+            else
+            {
+                <p>Кількість підписників: 0</p>
+            }
+
             <button>Відслідкувати</button>
             <hr />
 
             <div class="user-info-field">
                 <label for="posts">Кількість постів:</label>
-                <span>3</span>
+                @if (Model.Posts != null)
+                {
+                    <span>@Model.Posts.Count()</span>
+                }
+                else
+                {
+                    <span>0</span>
+                }
             </div>
             <div class="user-info-field">
                 <label for="registration-date">Дата реєстрації:</label>
-                <span>01.04.2022</span>
+                <span>@Model.User.registerDate</span>
             </div>
+
             <div class="user-info-field">
                 <label for="birthday">День народження:</label>
-                <span>17.10.1990</span>
+                <span>@Model.User.dateOfBirthday</span>
             </div>
-            <button src="#">Детальна інформація</button>
+            @if(Model.User.Id != null)
+            {
+                <a class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;" href="/UserAdditionalInfoes/Index?UserId=@Model.User.Id">Детальна інформація</a>
+            }
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;" href="/Posts/Create">Створити пост</a>
+            }
         </div>
     </div>
 
-    @foreach (var post in Model)
-    {
 
-        <div class="post-main-page">
-            <div class="user-info1">
-                <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
-                <div class="user-details1">
-                    <a href="">
-                        <div class="user-name1">@post.User.userNikName</div>
-                    </a>
-                    <div class="post-date">@post.CreatedDateRime</div>
+
+    <div id="postContainer">
+        @foreach (var post in Model.Posts)
+        {
+            <div class="post-main-page">
+                <div class="user-info1">
+                    <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
+                    <div class="user-details1">
+                        <a href="~/Posts/UserProfile/@post.User.Id">
+                            <div class="user-name1">@post.User.userNikName</div>
+                        </a>
+                        <div class="post-date">@post.CreatedDateRime</div>
+                    </div>
+                    <img class="post-button" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_settings-48.png" alt="Post button">
                 </div>
-                <img class="post-button" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_settings-48.png" alt="Post button">
-            </div>
 
-            <div class="post-hestag">
-                @foreach (var item in post.PostHashTags)
-                {
-                    <a href="">
-                        <label>
-                            @item.Name
-                        </label>
-                    </a>
-                }
-            </div>
-
-
-            <div class="post-content">
-                <div class="post-text">
-                    <p>@post.Text</p>
+                <div class="post-hestag">
+                    @if(post.PostHashTags != null)
+                    {
+                        @foreach (var item in post.PostHashTags)
+                        {
+                            <a href="">
+                                <label>
+                                    @item.Name
+                                </label>
+                            </a>
+                        }
+                    }
                 </div>
-                @if (post.Files.Any())
-                {
-                    <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/Posts/BigPost/@post.Id">
-                        <img class="post-image" src="@Url.Content(post.Files.First().FileName)" alt="Post image" />
-                    </a>
-                }
+
+                <div class="post-content">
+                    <div class="post-text">
+                        <p>@post.Text</p>
+                    </div>
+                    @if (post.Files.Any())
+                    {
+                        <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/Posts/BigPost/@post.Id">
+                            <img class="post-image" src="@Url.Content(post.Files.First().FileName)" alt="Post image" />
+                        </a>
+                    }
+                </div>
+
+                <div class="post-stats">
+                    <button class="post-button" onclick="addLike(@post.Id)">
+                        <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
+                    </button>
+                    @if (post.Likes != null)
+                    {
+                        <span class="heart-count">@post.Likes.Count</span>
+                    }
+                    else
+                    {
+                        <span class="heart-count">0</span>
+                    }
+                    <button class="post-button">
+                        <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
+                    </button>
+                    @if (post.Comments != null)
+                    {
+                        <span class="heart-count">@post.Comments.Count</span>
+                    }
+                    else
+                    {
+                        <span class="comment-count">0</span>
+                    }
+                </div>
             </div>
-            <div class="post-stats">
-                <button class="post-button">
-                    <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
-                </button>
+        }
+    </div>
 
-                <span class="heart-count">37</span>
-                <button class="post-button">
-                    <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
+    
 
-                </button>
-                <span class="comment-count">4</span>
+
+
+
+    <div id="PopUp" style=" background: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: fixed  ; top: 0; left: 0; overflow-y: scroll; display: none; z-index: 9999999">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 pt-4 pb-5 mt-5" id="PopUpContent" style="color: black;">
+                </div>
+                <button class="col-1 offset-9 btn btn-primary" style="position: fixed; top: 10%; right: 40px" onclick="PopUpHide();">✖</button>
             </div>
         </div>
-    }
+    </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addLike(postId) {
+        $.ajax({
+            url: '@Url.Action("AddLike", "Likes")',
+            type: 'POST',
+            data: { Id: postId },
+            success: function () {
+                // Оновлення даних на сторінці, якщо потрібно
+            },
+            error: function () {
+                // Обробка помилки, якщо потрібно
+            }
+        });
+    }
+
+    function searchPosts() {
+        var name = $('#name').val();
+        var hashtag = $('#hashtag').val();
+        var userType = $('#user-type').val();
+
+        $.ajax({
+            url: '@Url.Action("SearchPosts", "Posts")',
+            type: 'POST',
+            data: { name: name, hashtag: hashtag, userType: userType },
+            success: function (data) {
+                $('#postContainer').html(data);
+            },
+            error: function () {
+                // Обробка помилки, якщо потрібно
+            }
+        });
+    }
+</script>

@@ -9,7 +9,7 @@ namespace MyMainDiplomProject.Models
         [Key]
         public int Id { get; set; }
         public string UserId { get; set; }
-        public int FolloverUserId { get; set; }
+        public string FolloverUserId { get; set; }
 
         public virtual MyMainDiplomProjectUser User1 { get; set; }
         public virtual MyMainDiplomProjectUser User2 { get; set; }

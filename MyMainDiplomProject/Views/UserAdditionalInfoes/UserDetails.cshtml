@@ -47,7 +47,14 @@
 
         <div class="user-details-block">
             <h3>Інформація про себе</h3>
-            <p>@Model.Description</p>
+            @if(Model.ShowDescription == true)
+            {
+                <p>@Model.Description</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
         </div>
 
     </div>
@@ -55,17 +62,38 @@
     <div class="user-details-container">
         <div class="user-details-block">
             <h3>Місце роботи</h3>
-            <p>@Model.WorkPlase</p>
+            @if (Model.ShowWorkPlase == true)
+            {
+                <p>@Model.WorkPlase</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
         </div>
 
         <div class="user-details-block">
             <h3>Інтереси</h3>
-            <p>@Model.UserInterests</p>
+            @if (Model.ShowUserInterests == true)
+            {
+                <p>@Model.UserInterests</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
         </div>
 
         <div class="user-details-block">
             <h3>Освіта</h3>
-            <p>@Model.Education</p>
+            @if (Model.ShowEducation == true)
+            {
+                <p>@Model.Education</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
         </div>
     </div>
 </body>

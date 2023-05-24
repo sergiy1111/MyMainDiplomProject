@@ -27,15 +27,15 @@
         <nav>
             <ul>
                 <li><a href="~/Home/Index"><i class="fa fa-home"></i></a></li>
-                <li><a href="~/Posts/UserProfile/@User.Identity.Name"><i class="fa fa-users"></i></a></li>
+                <li><a href="/UserAdditionalInfoes/UserList"><i class="fa fa-users"></i></a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li><a href="~/UserAdditionalInfo/Profile"><i class="fa fa-user"></i></a></li>
+                    <li><a href="/Posts/MyUserProfile"><i class="fa fa-user"></i></a></li>
                     <li><a href="~/UserAdditionalInfo/Setings"><i class="fa fa-cog"></i></a></li>
                 }
                 @if(User.Identity.AuthenticationType == "Admin")
                 {
-                    <li><a href="~/UserAdditionalInfo/AdminPanel"><i class="fa fa-cog"></i></a></li>
+                    <li><a href="~/UserAdditionalInfo/Index"><i class="fa fa-cog"></i></a></li>
                 }
             </ul>
         </nav>
