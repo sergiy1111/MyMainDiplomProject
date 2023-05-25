@@ -29,8 +29,9 @@ namespace MyMainDiplomProject.Controllers
 
         public async Task<IActionResult> Index(string UserId)
         {
-            if(UserId == null) {
-                var Id = "Penis";
+            if (UserId == "MyProfile")
+            {
+                UserId = _context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id;
             }
 
             if (_context.UserAdditionalInfo.Where(i => i.UserId == UserId).IsNullOrEmpty())
@@ -257,6 +258,7 @@ namespace MyMainDiplomProject.Controllers
             if(model.Id != null)
             {
                 UserAdditionalInfo NewInfo = _context.UserAdditionalInfo.Where(i => i.UserId == model.UserAdditional.UserId).FirstOrDefault();
+                NewInfo.User = _context.Users.Where(i => i.Id == model.UserAdditional.UserId).FirstOrDefault();
 
                 if(model.Id == 1)
                 {
@@ -334,7 +336,7 @@ namespace MyMainDiplomProject.Controllers
                     }
                     else
                     {
-                        NewInfo.UserAvatar = "UserName";
+                        NewInfo.User.userNikName = "UserName";
                     }
                 }
 

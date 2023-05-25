@@ -21,16 +21,31 @@
         <div class="user-details-block">
             <h3>Аватар користувача</h3>
             <img class="user-image-big" src="@Model.UserAvatar" alt="Avatar" style="max-width: 100%; max-height: 100%;">
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=5" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
         </div>
 
         <div class="user-details-block">
             <h3>Псевдонім</h3>
             <p>@Model.User.userNikName</p>
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=6" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
         </div>
 
         <div class="user-details-block">
             <h3>Пошта</h3>
             <p>@Model.User.Email</p>
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=7" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
         </div>
     </div>
 
@@ -47,7 +62,19 @@
 
         <div class="user-details-block">
             <h3>Інформація про себе</h3>
-            <p>@Model.Description</p>
+            @if ((Model.ShowDescription == true && Model.Description != null) || Model.User.UserName == User.Identity.Name)
+            {
+                <p>@Model.Description</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=1" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
         </div>
 
     </div>
@@ -55,17 +82,64 @@
     <div class="user-details-container">
         <div class="user-details-block">
             <h3>Місце роботи</h3>
-            <p>@Model.WorkPlase</p>
+            @if (Model.ShowWorkPlase == true && Model.WorkPlase != null)
+            {
+                <p>@Model.WorkPlase</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=2" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
         </div>
 
         <div class="user-details-block">
             <h3>Інтереси</h3>
-            <p>@Model.UserInterests</p>
+            @if (Model.ShowUserInterests == true && Model.UserInterests != null)
+            {
+                <p>@Model.UserInterests</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=3" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
         </div>
 
         <div class="user-details-block">
             <h3>Освіта</h3>
-            <p>@Model.Education</p>
+            @if ((Model.ShowEducation == true && Model.Education != null) || Model.User.UserName == User.Identity.Name)
+            {
+                <p>@Model.Education</p>
+            }
+            else
+            {
+                <p>Невідомо</p>
+            }
+
+            @if (Model.User.UserName == User.Identity.Name)
+            {
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=4" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+            }
+        </div>
+    </div>
+
+
+    <div id="PopUp" style=" background: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; position: fixed  ; top: 0; left: 0; overflow-y: scroll; display: none; z-index: 9999999">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 pt-4 pb-5 mt-5" id="PopUpContent" style="color: black;">
+                </div>
+                <button class="col-1 offset-9 btn btn-primary" style="position: fixed; top: 10%;" onclick="PopUpHide();">✖</button>
+            </div>
         </div>
     </div>
 </body>

@@ -1,49 +1,99 @@
 ﻿@model MyMainDiplomProject.Models.ViewModels.ChangeSeatingsViewModel
 
-<div>
-    @if(Model.Id == 1)
-    {
-        <label for="description">Опис:</label>
-        <input type="text" id="description" name="UserAdditional.Description" />
+<div class="post">
+    <form asp-action="InputOrEdit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+        <input type="hidden" asp-for="UserAdditional.UserId" value="@Model.UserAdditional.UserId" />
 
-        <label for="showDescription">Показувати опис:</label>
-        <input type="checkbox" id="showDescription" name="UserAdditional.ShowDescription" value="true" />
+        @if(Model.Id == 1)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.Description" class="control-label" style="font-weight: bold; font-size: 36px;">Про себе</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.Description" class="form-control" />
+                <span asp-validation-for="UserAdditional.Description" class="text-danger"></span>
+        
+            <label>
+                <input type="checkbox" asp-for="UserAdditional.ShowDescription" /> Відображати опис
+            </label>
+            </div>
 
-    }
+        }
 
-    @if (Model.Id == 2)
-    {
-        <label for="workPlace">Місце роботи:</label>
-        <input type="text" id="workPlace" name="UserAdditional.WorkPlace" />
+        @if (Model.Id == 2)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.WorkPlase" class="control-label" style="font-weight: bold; font-size: 36px;">Місце роботи</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.WorkPlase" class="form-control" />
+                <span asp-validation-for="UserAdditional.WorkPlase" class="text-danger"></span>
 
-        <label for="showWorkPlace">Показувати місце роботи:</label>
-        <input type="checkbox" id="showWorkPlace" name="UserAdditional.ShowWorkPlace" value="true" />
-    }
+                <label>
+                    <input type="checkbox" asp-for="UserAdditional.ShowWorkPlase" /> Відображати місце роботи
+                </label>
+            </div>
+        }
     
-    @if (Model.Id == 3)
-    {
-        <label for="userInterests">Інтереси користувача:</label>
-        <input type="text" id="userInterests" name="UserAdditional.UserInterests" />
+        @if (Model.Id == 3)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.UserInterests" class="control-label" style="font-weight: bold; font-size: 36px;">Інтереси користувача</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.UserInterests" class="form-control" />
+                <span asp-validation-for="UserAdditional.UserInterests" class="text-danger"></span>
 
-        <label for="showUserInterests">Показувати інтереси користувача:</label>
-        <input type="checkbox" id="showUserInterests" name="UserAdditional.ShowUserInterests" value="true" />
-    }
+                <label>
+                    <input type="checkbox" asp-for="UserAdditional.ShowUserInterests" /> Відображати інтереси користувача
+                </label>
+            </div>
+        }
 
-    @if (Model.Id == 4)
-    {
-        <label for="education">Освіта:</label>
-        <input type="text" id="education" name="UserAdditional.Education" />
+        @if (Model.Id == 4)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.Education" class="control-label" style="font-weight: bold; font-size: 36px;">Освіта</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.Education" class="form-control" />
+                <span asp-validation-for="UserAdditional.Education" class="text-danger"></span>
 
-        <label for="showEducation">Показувати освіту:</label>
-        <input type="checkbox" id="showEducation" name="UserAdditional.ShowEducation" value="true" />
-    }
+                <label>
+                    <input type="checkbox" asp-for="UserAdditional.ShowEducation" /> Відображати освіту
+                </label>
+            </div>
+        }
 
 
-    @if (Model.Id == 5)
-    {
-        <label for="userAvatar">Аватар користувача:</label>
-        <input type="file" id="userAvatar" name="UserAdditional.UserAvatar" accept="image/*" />
-    }
+        @if (Model.Id == 5)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.UserAvatar" class="control-label" style="font-weight: bold; font-size: 36px;">Аватар користувача</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.UserAvatar" class="form-control" />
+                <span asp-validation-for="UserAdditional.UserAvatar" class="text-danger"></span>
+            </div>
+        }
 
-    <button type="submit">Зберегти</button>
+        @if (Model.Id == 6)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.User.userNikName" class="control-label" style="font-weight: bold; font-size: 36px;">Псевдонім</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.User.userNikName" class="form-control" />
+                <span asp-validation-for="UserAdditional.User.userNikName" class="text-danger"></span>
+            </div>
+        }
+
+        @if (Model.Id == 7)
+        {
+            <div class="user-details-block">
+                <label asp-for="UserAdditional.User.Email" class="control-label" style="font-weight: bold; font-size: 36px;">Пошта</label>
+                <hr style="color: black; margin-bottom: 40px; width: 100%;"></hr>
+                <input asp-for="UserAdditional.User.Email" class="form-control" />
+                <span asp-validation-for="UserAdditional.User.Email" class="text-danger"></span>
+            </div>
+        }
+
+        <button type="submit" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;">Зберегти</button>
+    </form>
 </div>
