@@ -11,7 +11,7 @@
 
     <div class="user-block-page">
         <div class="user-avatar-page">
-            <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
+            <img src="@Model.UserAdditionalInfo.UserAvatar" alt="Avatar">
         </div>
         <div class="user-details">
             <h2>@Model.User.userNikName</h2>
@@ -67,7 +67,7 @@
         {
             <div class="post-main-page">
                 <div class="user-info1">
-                    <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
+                    <img class="user-image1" src="@Model.UserAdditionalInfo.UserAvatar" alt="User profile picture">
                     <div class="user-details1">
                         <a href="~/Posts/UserProfile/@post.User.Id">
                             <div class="user-name1">@post.User.userNikName</div>

@@ -92,6 +92,12 @@ namespace MyMainDiplomProject.Controllers
             return View("UserProfile", myMainDiplomProjectDbContext);
         }
 
+        public async Task<IActionResult> AdminStats()
+        {
+            return View();
+
+        }
+
         public async Task<IActionResult> AdminStatsUser()
         {
 
@@ -140,8 +146,8 @@ namespace MyMainDiplomProject.Controllers
                 PostsForMonth = _context.Posts.Where(i => i.CreatedDateRime >= ThirtyDaysAgo).Count(),
                 PostsForThreeMonth = _context.Posts.Where(i => i.CreatedDateRime >= NinetyDaysAgo).Count(),
                 PostsForYear = _context.Posts.Where(i => i.CreatedDateRime >= YearAgo).Count(),
-                PostsWithPictures = _context.Posts.Where(i => i.Files != null).Count(),
-                PostsWithHasTags = _context.Posts.Where(i => i.PostHashTags != null).Count(),
+                //PostsWithPictures = _context.Posts.Count(i => i.Files != null),
+                //PostsWithHasTags = _context.Posts.Count(i => i.PostHashTags != null),
             };
             return View(model);
         }
@@ -164,14 +170,12 @@ namespace MyMainDiplomProject.Controllers
 
         public async Task<IActionResult> AdminStatsHashTags()
         {
-            DateTime ThirtyDaysAgo = DateTime.Now.AddDays(-30);
-            DateTime NinetyDaysAgo = DateTime.Now.AddDays(-90);
-            DateTime YearAgo = DateTime.Now.AddDays(-365);
 
             var topHashtags = _context.HashTags.GroupBy(ht => ht.Name).OrderByDescending(g => g.Count()).Take(3).Select(g => new { Name = g.Key, Count = g.Count() }).ToList();
 
             StatsViewModel model = new StatsViewModel
             {
+                TotalHasTags = _context.HashTags.Count(),
                 TopHasTag1 = topHashtags.Count >= 1 ? topHashtags[0].Name : "",
                 TopHasTag2 = topHashtags.Count >= 2 ? topHashtags[1].Name : "",
                 TopHasTag3 = topHashtags.Count >= 3 ? topHashtags[2].Name : "",
@@ -351,7 +355,9 @@ namespace MyMainDiplomProject.Controllers
                 _context.Update(NewInfo);
                 _context.SaveChanges();
             }
-            return PartialView(model);
+
+            return RedirectToAction("Index","UserAdditionalInfoes", new { UserId = model.UserAdditional.UserId });
+
         }
 
 

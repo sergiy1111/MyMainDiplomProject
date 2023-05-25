@@ -24,7 +24,7 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=5" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=5" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
 
@@ -34,7 +34,7 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=6" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=6" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
 
@@ -44,7 +44,7 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=7" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=7" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
     </div>
@@ -73,7 +73,7 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=1" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=1" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
 
@@ -82,7 +82,7 @@
     <div class="user-details-container">
         <div class="user-details-block">
             <h3>Місце роботи</h3>
-            @if (Model.ShowWorkPlase == true && Model.WorkPlase != null)
+            @if ((Model.ShowWorkPlase == true && Model.WorkPlase != null) || Model.User.UserName == User.Identity.Name)
             {
                 <p>@Model.WorkPlase</p>
             }
@@ -93,13 +93,13 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=2" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=2" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
 
         <div class="user-details-block">
             <h3>Інтереси</h3>
-            @if (Model.ShowUserInterests == true && Model.UserInterests != null)
+            @if ((Model.ShowUserInterests == true && Model.UserInterests != null)  || Model.User.UserName == User.Identity.Name)
             {
                 <p>@Model.UserInterests</p>
             }
@@ -110,7 +110,7 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=3" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=3" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
 
@@ -127,7 +127,7 @@
 
             @if (Model.User.UserName == User.Identity.Name)
             {
-                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=4" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Text</label></a>
+                <a data-ajax-success="PopUpShow();" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#PopUpContent" href="/UserAdditionalInfoes/InputOrEdit?ChangeId=4" class="btn" style="width: 100%; background-color: #6b6d70; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; margin: 10px 0px; cursor: pointer; transition: all 0.3s ease-in-out; font-family: inherit; font-size: inherit; line-height: inherit;"><label>Редагувати</label></a>
             }
         </div>
     </div>

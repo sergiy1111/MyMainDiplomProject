@@ -1,0 +1,54 @@
+﻿@model MyMainDiplomProject.Models.ViewModels.StatsViewModel
+@{
+    Layout = "";
+}
+<div class="admin-container">
+    <div class="admin-block">
+        <h4>Усього користувачі системи</h4>
+        <div class="admin-content">@Model.TotalUsers</div>
+    </div>
+    <div class="admin-block">
+        <h4>Кількість активних користувачів</h4>
+        <div class="admin-content">@Model.ActivUser</div>
+    </div>
+    <div class="admin-block">
+        <h4>Кількість неактивних користувачів</h4>
+        <div class="admin-content">@Model.PassiveUsers</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових користувачів за місяць</h4>
+        <div class="admin-content">@Model.UsersForMonth</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових користувачів за три місяці</h4>
+        <div class="admin-content">@Model.UsersForThreeMonth</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових користувачів за один рік</h4>
+        <div class="admin-content">@Model.UsersForYear</div>
+    </div>
+    <div class="admin-block">
+        <h4>Користувачів від 14 до 29 років</h4>
+        <div class="admin-content">@Model.YoungUsers</div>
+    </div>
+    <div class="admin-block">
+        <h4>Користувачів від 30 до 59 років</h4>
+        <div class="admin-content">@Model.MiddleAgedUsers</div>
+    </div>
+    <div class="admin-block">
+        <h4>Користувачів 60 років та більше</h4>
+        <div class="admin-content">@Model.OldAgedUsers</div>
+    </div>
+    <div class="admin-block">
+        <h4>Наявність освіти (відсоткове відношення)</h4>
+        <div class="admin-content">@Model.UsersHaveEducation %</div>
+    </div>
+    <div class="admin-block">
+        <h4>Наявність місця роботи (відсоткове відношення)</h4>
+        <div class="admin-content">@Model.UsersHaveWork %</div>
+    </div>
+    <div class="admin-block">
+        <h4>Всього відслідковувань</h4>
+        <div class="admin-content">@Model.AllFollowCount</div>
+    </div>
+</div>

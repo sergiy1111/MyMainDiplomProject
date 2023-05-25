@@ -1,0 +1,24 @@
+﻿@model MyMainDiplomProject.Models.ViewModels.StatsViewModel
+@{
+    Layout = "";
+}
+
+<div class="admin-container">
+    <div class="admin-block">
+        <h4>Усього коментарів</h4>
+        <div class="admin-content">@Model.TotalComments</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових коментарів за місяць</h4>
+        <div class="admin-content">@Model.CommentsFowMounth</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових коментарів за три місяці</h4>
+        <div class="admin-content">@Model.CommentsForThreeMounth</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових коментарів за рік</h4>
+        <div class="admin-content">@Model.CommentsForYear</div>
+    </div>
+
+</div>

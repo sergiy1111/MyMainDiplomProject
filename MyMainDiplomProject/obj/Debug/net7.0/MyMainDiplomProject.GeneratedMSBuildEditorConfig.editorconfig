@@ -136,6 +136,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcSW5kZXgxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Posts/UserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdHNcVXNlclByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,6 +154,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/UserAdditionalInfoes/AdminStats.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFkZGl0aW9uYWxJbmZvZXNcQWRtaW5TdGF0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/UserAdditionalInfoes/AdminStatsComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFkZGl0aW9uYWxJbmZvZXNcQWRtaW5TdGF0c0NvbW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/UserAdditionalInfoes/AdminStatsHashTags.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFkZGl0aW9uYWxJbmZvZXNcQWRtaW5TdGF0c0hhc2hUYWdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/UserAdditionalInfoes/AdminStatsPost.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFkZGl0aW9uYWxJbmZvZXNcQWRtaW5TdGF0c1Bvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/UserAdditionalInfoes/AdminStatsUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFkZGl0aW9uYWxJbmZvZXNcQWRtaW5TdGF0c1VzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/MyDiplom/MyMainDiplomProject/MyMainDiplomProject/Views/UserAdditionalInfoes/Create.cshtml]

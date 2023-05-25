@@ -1,0 +1,42 @@
+﻿
+
+<head>
+    <title>Адмінпанель</title>
+</head>
+
+<body>
+    <div class="panel">
+        Адмін панель
+    </div>
+
+    <div class="user-block-page" style="margin-left: 350px;">
+        <div>
+            <h2>Вибір даних</h2>
+        </div>
+        <hr />
+        <div class="user-details">
+            <button id="adminStatsUserBtn" onclick="loadAdminStats('@Url.Action("AdminStatsUser", "UserAdditionalInfoes")')">Користувачі</button>
+            <button id="adminStatsPostBtn" onclick="loadAdminStats('@Url.Action("AdminStatsPost", "UserAdditionalInfoes")')">Пости</button>
+            <button id="adminStatsCommentBtn" onclick="loadAdminStats('@Url.Action("AdminStatsComment", "UserAdditionalInfoes")')">Коментарі</button>
+            <button id="adminStatsHashTagsBtn" onclick="loadAdminStats('@Url.Action("AdminStatsHashTags", "UserAdditionalInfoes")')">Хештеги</button>
+
+        </div>
+    </div>
+
+    <div id="admin-container"></div>
+
+    <script>
+        function loadAdminStats(url) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (result) {
+                    $('#admin-container').html(result);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</body>

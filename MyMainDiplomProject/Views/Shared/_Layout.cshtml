@@ -26,7 +26,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="~/Home/Index"><i class="fa fa-home"></i></a></li>
+                <li><a href="~/Posts/Index1"><i class="fa fa-home"></i></a></li>
                 <li><a href="/UserAdditionalInfoes/UserList"><i class="fa fa-users"></i></a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -56,6 +56,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/jquery.unobtrusive-ajax.js"></script>
     <script src="~/lib/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
     @await RenderSectionAsync("Scripts", required: false)

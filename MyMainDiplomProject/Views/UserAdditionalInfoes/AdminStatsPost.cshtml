@@ -1,0 +1,31 @@
+﻿@model MyMainDiplomProject.Models.ViewModels.StatsViewModel
+@{
+    Layout = "";
+}
+
+<div class="admin-container">
+    <div class="admin-block">
+        <h4>Усього постів</h4>
+        <div class="admin-content">@Model.TotalPosts</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових постів за місяць</h4>
+        <div class="admin-content">@Model.PostsForMonth</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових постів за три місяці</h4>
+        <div class="admin-content">@Model.PostsForThreeMonth</div>
+    </div>
+    <div class="admin-block">
+        <h4>Нових постів за рік</h4>
+        <div class="admin-content">@Model.PostsForYear</div>
+    </div>
+    <div class="admin-block">
+        <h4>Постів з рисунками</h4>
+        <div class="admin-content">@Model.PostsWithPictures</div>
+    </div>
+    <div class="admin-block">
+        <h4>Постів з хештегами</h4>
+        <div class="admin-content">@Model.PostsWithHasTags</div>
+    </div>
+</div>

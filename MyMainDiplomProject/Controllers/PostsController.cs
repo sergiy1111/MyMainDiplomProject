@@ -25,10 +25,38 @@ namespace MyMainDiplomProject.Controllers
         }
 
         // GET: Posts
+        /*
         public async Task<IActionResult> Index()
         {
+
             var myMainDiplomProjectDbContext = _context.Posts.Include(p => p.User).OrderByDescending(i => i.CreatedDateRime).ToListAsync();
             return View(await myMainDiplomProjectDbContext);
+        }
+        */
+        public async Task<IActionResult> Index()
+        {
+            PostInfoViewModel model = new PostInfoViewModel
+            {
+                Posts = _context.Posts.Include(p => p.User).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Likes).Include(i => i.Comments).OrderByDescending(i => i.CreatedDateRime).ToList(),
+                Users = _context.Users.ToList(),
+                UserAdditionalInfos = _context.UserAdditionalInfo.ToList(),
+                FollowLists = _context.FollowLists.ToList()
+            };
+           
+            return RedirectToAction("Index1", model);
+        }
+
+        public async Task<IActionResult> Index1()
+        {
+            PostInfoViewModel model = new PostInfoViewModel
+            {
+                Posts = _context.Posts.Include(p => p.User).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Likes).Include(i => i.Comments).OrderByDescending(i => i.CreatedDateRime).ToList(),
+                Users = _context.Users.ToList(),
+                UserAdditionalInfos = _context.UserAdditionalInfo.ToList(),
+                FollowLists = _context.FollowLists.ToList()
+            };
+
+            return View(model);
         }
 
         // GET: Posts/Details/5
@@ -131,7 +159,12 @@ namespace MyMainDiplomProject.Controllers
             return View("UserProfile", model);
 
         }
-        
+
+        public ActionResult BigPost(int Id)
+        {
+            return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.Id == Id).FirstOrDefault());
+        }
+
 
 
 
@@ -234,11 +267,6 @@ namespace MyMainDiplomProject.Controllers
         private bool PostExists(int id)
         {
           return (_context.Posts?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-        public ActionResult BigPost(int Id)
-        {
-            return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.Id == Id).FirstOrDefault());
         }
 
     }
