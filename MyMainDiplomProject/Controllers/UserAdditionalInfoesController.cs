@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +7,6 @@ using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
 using MyMainDiplomProject.Models.ViewModels;
-using static System.Net.WebRequestMethods;
 
 namespace MyMainDiplomProject.Controllers
 {
@@ -74,7 +66,7 @@ namespace MyMainDiplomProject.Controllers
                 }
             }
 
-            var myMainDiplomProjectDbContext = _context.UserAdditionalInfo.Include(i => i.User) ;
+            var myMainDiplomProjectDbContext = _context.UserAdditionalInfo.Include(i => i.User);
             return View(await myMainDiplomProjectDbContext.ToListAsync());
 
         }
@@ -91,7 +83,7 @@ namespace MyMainDiplomProject.Controllers
             var myMainDiplomProjectDbContext = _context.UserAdditionalInfo.Include(i => i.User).Where(i => i.UserId == _context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id).FirstOrDefault();
             return View("UserProfile", myMainDiplomProjectDbContext);
         }
-
+        
         public async Task<IActionResult> AdminStats()
         {
             return View();

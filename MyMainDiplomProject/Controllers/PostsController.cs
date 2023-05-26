@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic.FileIO;
-using MyMainDiplomProject.Areas.Identity.Data;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
@@ -24,23 +18,25 @@ namespace MyMainDiplomProject.Controllers
             _context = context;
         }
 
-        // GET: Posts
-        /*
         public async Task<IActionResult> Index()
         {
+            var topHashtags = _context.HashTags
+                .GroupBy(ht => ht.Name)
+                .OrderByDescending(g => g.Count())
+                .Take(3)
+                .Select(g => new { Name = g.Key, Count = g.Count() }).ToList();
 
-            var myMainDiplomProjectDbContext = _context.Posts.Include(p => p.User).OrderByDescending(i => i.CreatedDateRime).ToListAsync();
-            return View(await myMainDiplomProjectDbContext);
-        }
-        */
-        public async Task<IActionResult> Index()
-        {
             PostInfoViewModel model = new PostInfoViewModel
             {
                 Posts = _context.Posts.Include(p => p.User).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Likes).Include(i => i.Comments).OrderByDescending(i => i.CreatedDateRime).ToList(),
                 Users = _context.Users.ToList(),
                 UserAdditionalInfos = _context.UserAdditionalInfo.ToList(),
-                FollowLists = _context.FollowLists.ToList()
+                FollowLists = _context.FollowLists.ToList(),
+                TopHasTag1 = topHashtags.Count >= 1 ? topHashtags[0].Name : "",
+                TopHasTag2 = topHashtags.Count >= 2 ? topHashtags[1].Name : "",
+                TopHasTag3 = topHashtags.Count >= 3 ? topHashtags[2].Name : "",
+                TopHasTag4 = topHashtags.Count >= 4 ? topHashtags[3].Name : "",
+                TopHasTag5 = topHashtags.Count >= 5 ? topHashtags[4].Name : ""
             };
            
             return RedirectToAction("Index1", model);
@@ -48,37 +44,28 @@ namespace MyMainDiplomProject.Controllers
 
         public async Task<IActionResult> Index1()
         {
+            var topHashtags = _context.HashTags
+                .GroupBy(ht => ht.Name)
+                .OrderByDescending(g => g.Count())
+                .Take(3)
+                .Select(g => new { Name = g.Key, Count = g.Count() }).ToList();
+
             PostInfoViewModel model = new PostInfoViewModel
             {
                 Posts = _context.Posts.Include(p => p.User).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Likes).Include(i => i.Comments).OrderByDescending(i => i.CreatedDateRime).ToList(),
                 Users = _context.Users.ToList(),
                 UserAdditionalInfos = _context.UserAdditionalInfo.ToList(),
-                FollowLists = _context.FollowLists.ToList()
+                FollowLists = _context.FollowLists.ToList(),
+                TopHasTag1 = topHashtags.Count >= 1 ? topHashtags[0].Name : "",
+                TopHasTag2 = topHashtags.Count >= 2 ? topHashtags[1].Name : "",
+                TopHasTag3 = topHashtags.Count >= 3 ? topHashtags[2].Name : "",
+                TopHasTag4 = topHashtags.Count >= 4 ? topHashtags[3].Name : "",
+                TopHasTag5 = topHashtags.Count >= 5 ? topHashtags[4].Name : ""
             };
 
             return View(model);
         }
 
-        // GET: Posts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Posts == null)
-            {
-                return NotFound();
-            }
-
-            var post = await _context.Posts
-                .Include(p => p.User).Include(p => p.Files)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return View(post);
-        }
-
-        // GET: Posts/Create
         [Authorize]
         public IActionResult Create()
         {
@@ -133,7 +120,15 @@ namespace MyMainDiplomProject.Controllers
 
         public async Task<IActionResult> UserProfile(string Id)
         {
-            var myMainDiplomProjectDbContext = _context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.UserId == Id).FirstOrDefault();
+            var myMainDiplomProjectDbContext = _context.Posts
+                .Include(i => i.User)
+                .Include(i => i.Files)
+                .Include(i => i.PostHashTags)
+                .Include(i => i.Files)
+                .Include(i => i.Comments)
+                .Include(i => i.Likes)
+                .Where(i => i.UserId == Id)
+                .FirstOrDefault();
 
             UserProfileViewModel model = new UserProfileViewModel
             {
@@ -145,6 +140,7 @@ namespace MyMainDiplomProject.Controllers
             return View("UserProfile", model);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyUserProfile()
         {
             string Id = _context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id;
@@ -162,7 +158,108 @@ namespace MyMainDiplomProject.Controllers
 
         public ActionResult BigPost(int Id)
         {
-            return PartialView(_context.Posts.Include(i => i.User).Include(i => i.Files).Include(i => i.PostHashTags).Include(i => i.Files).Include(i => i.Comments).Include(i => i.Likes).Where(i => i.Id == Id).FirstOrDefault());
+            var post = _context.Posts
+                .Include(i => i.User)
+                .Include(i => i.Files)
+                .Include(i => i.PostHashTags)
+                .Include(i => i.Files)
+                .Include(i => i.Comments)
+                .Include(i => i.Likes)
+                .Where(i => i.Id == Id)
+                .FirstOrDefault();
+
+            PostInfoViewModel model = new PostInfoViewModel
+            {
+                Post = post,
+                UserAdditionalInfo = _context.UserAdditionalInfo.Where(i => i.UserId == post.UserId).FirstOrDefault()
+            };
+            return PartialView(model);
+            
+        }
+
+        public ActionResult SearchByHashTag(string HasTag)
+        {
+            List<Post> filteredPosts = _context.Posts
+                .Include(p => p.User)
+                .Include(i => i.PostHashTags)
+                .Include(i => i.Files)
+                .Include(i => i.Likes)
+                .Include(i => i.Comments)
+                .Where(p => p.PostHashTags.Any(i => i.Name == HasTag))
+                .OrderByDescending(i => i.CreatedDateRime)
+                .ToList();
+
+            PostInfoViewModel model = new PostInfoViewModel
+            {
+                Posts = filteredPosts,
+                Users = _context.Users.ToList(),
+                UserAdditionalInfos = _context.UserAdditionalInfo.ToList(),
+                FollowLists = _context.FollowLists.ToList(),
+            };
+
+            return PartialView(model);
+        }
+
+
+        public ActionResult Search(string name, string hashtag, string userType)
+        {
+            List<Post> filteredPosts = new List<Post>();
+            List<FollowList> follow = _context.FollowLists.ToList();
+            string userId; 
+
+
+            filteredPosts = _context.Posts
+                    .Include(p => p.User)
+                    .Include(i => i.PostHashTags)
+                    .Include(i => i.Files)
+                    .Include(i => i.Likes)
+                    .Include(i => i.Comments)
+                    .OrderByDescending(i => i.CreatedDateRime)
+                    .ToList();
+
+            if (name != null)
+            {
+                filteredPosts = filteredPosts.Where(i => i.User.userNikName.Contains(name)).ToList();
+            }
+
+            if (hashtag != null)
+            {
+                filteredPosts = filteredPosts.Where(i => i.PostHashTags.Any(i => i.Name == hashtag)).ToList();
+            }
+
+            if (userType == "friend")
+            {
+                userId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id);
+                follow = _context.FollowLists.Where(i => i.UserId == userId).ToList();
+                filteredPosts = filteredPosts.Join(
+                    follow,
+                    post => post.UserId,
+                    f => f.FolloverUserId,
+                    (post, f) => post
+                ).ToList();
+            }
+
+            else if (userType == "all")
+            {
+                userId = Convert.ToString(_context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault().Id);
+                follow = _context.FollowLists.Where(i => i.UserId != userId).ToList();
+                filteredPosts = filteredPosts.Join(
+                    follow,
+                    post => post.UserId,
+                    f => f.FolloverUserId,
+                    (post, f) => post
+                ).ToList();
+            }
+
+            PostInfoViewModel model = new PostInfoViewModel
+            {
+                Posts = filteredPosts,
+                Users = _context.Users.ToList(),
+                UserAdditionalInfos = _context.UserAdditionalInfo.ToList(),
+                FollowLists = follow,
+            };
+
+            return PartialView(model);
         }
 
 
@@ -172,6 +269,24 @@ namespace MyMainDiplomProject.Controllers
 
 
 
+        // GET: Posts/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Posts == null)
+            {
+                return NotFound();
+            }
+
+            var post = await _context.Posts
+                .Include(p => p.User).Include(p => p.Files)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
+        }
 
         // GET: Posts/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -1,20 +1,20 @@
-﻿@model Post
+﻿@model MyMainDiplomProject.Models.ViewModels.PostInfoViewModel
 
 
 <div class="post-main-page">
     <div class="user-info1">
-        <img class="user-image1" src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="User profile picture">
+        <img class="user-image1" src="@Model.UserAdditionalInfo.UserAvatar" alt="User profile picture">
         <div class="user-details1">
             <a href="">
-                <div class="user-name1">@Model.User.userNikName</div>
+                <div class="user-name1">@Model.Post.User.userNikName</div>
             </a>
-            <div class="post-date">@Model.CreatedDateRime</div>
+            <div class="post-date">@Model.Post.CreatedDateRime</div>
         </div>
         <img class="post-button" src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_settings-48.png" alt="Post button">
     </div>
 
     <div class="post-hestag">
-        @foreach (var item in Model.PostHashTags)
+        @foreach (var item in Model.Post.PostHashTags)
         {
             <a href="">
                 <label>
@@ -27,23 +27,23 @@
 
     <div class="post-content">
         <div class="post-text">
-            <p style="color: black;">@Model.Text</p>
+            <p style="color: black;">@Model.Post.Text</p>
         </div>
-        @if (Model.Files.Any())
+        @if (Model.Post.Files.Any())
         {
-            <img class="post-image" src="@Url.Content(Model.Files.First().FileName)" alt="Post image" />
+            <img class="post-image" src="@Url.Content(Model.Post.Files.First().FileName)" alt="Post image" />
         }
     </div>
 
     <div class="post-stats">
-        <button class="post-button" onClick="addLike(@Model.Id)">
+        <button class="post-button" onClick="addLike(@Model.Post.Id)">
             <img class="heart-icon" src="https://cdn0.iconfinder.com/data/icons/freebies-2/24/like-1-48.png" alt="Heart icon">
         </button>
-        <span class="heart-count" id="likeCount" style="color: black;">@(Model.Likes?.Count ?? 0)</span>
+        <span class="heart-count" id="likeCount" style="color: black;">@(Model.Post.Likes?.Count ?? 0)</span>
         <button class="post-button">
             <img class="comment-icon" src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/bubble-48.png" alt="Comment icon">
         </button>
-        <span class="comment-count" style="color: black;">@(Model.Comments?.Count ?? 0)</span>
+        <span class="comment-count" style="color: black;">@(Model.Post.Comments?.Count ?? 0)</span>
         <hr />
     </div>
 
@@ -51,7 +51,7 @@
         <div class="post-comments">
             <div class="comment-input-block">
                 <input type="text" name="model.Text" placeholder="Введіть коментар">
-                <input type="hidden" name="postId" value="@Model.Id" />
+                <input type="hidden" name="postId" value="@Model.Post.Id" />
                 <input type="submit" value="Створити коментар" class="btn btn-primary follow-button" />
             </div>
         </div>
@@ -64,7 +64,7 @@
 
     <div style="margin-top: 20px;">
         <div id="commentsContainer">
-        @foreach (var item in Model.Comments)
+        @foreach (var item in Model.Post.Comments)
         {
             <div class="comment-block">
                 <div class="user-info">
@@ -72,7 +72,7 @@
                         <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="Avatar">
                     </div>
                     <div class="user-details">
-                            UserId <h4 style="color: black;">@Model.User.userNikName</h4>
+                            UserId <h4 style="color: black;">@Model.Post.User.userNikName</h4>
                         <p class="comment-date" style="color: black;">@item.CreateDate</p>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
             $.ajax({
                 url: '@Url.Action("GetComments", "Comments")',
                 type: 'GET',
-                data: { postId: '@Model.Id' },
+                data: { postId: '@Model.Post.Id' },
                 success: function (data) {
                     $('#commentsContainer').html(data);
                 },
@@ -135,7 +135,7 @@
             $.ajax({
                 url: '@Url.Action("GetPostLikes", "Likes")',
                 type: 'GET',
-                data: { postId: '@Model.Id' },
+                data: { postId: '@Model.Post.Id' },
                 success: function (data) {
                     $('#likeCount').text(data);
                 },
