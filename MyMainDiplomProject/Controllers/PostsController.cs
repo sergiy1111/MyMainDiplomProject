@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using MyMainDiplomProject.Areas.Identity.Data;
 using MyMainDiplomProject.Data;
 using MyMainDiplomProject.Models;
 using MyMainDiplomProject.Models.ViewModel;
@@ -261,6 +262,92 @@ namespace MyMainDiplomProject.Controllers
 
             return PartialView(model);
         }
+
+        //навряд робоче
+
+
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
+            MyMainDiplomProjectUser user = _context.Users.Where(i => i.Email == User.Identity.Name).FirstOrDefault();
+
+            if (post.UserId == user.Id)
+            {
+                if (post == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Posts.Remove(post);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditPost(int id)
+        {
+            var post = await _context.Posts.Include(p => p.PostHashTags).Include(i => i.Files).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            PostInfoViewModel model = new PostInfoViewModel
+            {
+                Post = post,
+                PostHashTags = post.PostHashTags.Select(t => t.Name).ToList(),
+            };
+            
+
+            return View(model);
+        }
+        /*
+        [HttpPost]
+        public async Task<IActionResult> EditPost(PostInfoViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var post = await _context.Posts.Include(p => p.PostHashTags).FirstOrDefaultAsync(p => p.Id == model.Post.Id);
+
+                if (post == null)
+                {
+                    return NotFound();
+                }
+
+                post.Text = model.Post.Text;
+
+                if (model.HashTags != null)
+                {
+                    post.PostHashTags.Clear();
+
+                    foreach (var tag in model.HashTags)
+                    {
+                        if (_context.HashTags.Any(i => i.Name == tag))
+                        {
+                            var existingTag = _context.HashTags.FirstOrDefault(i => i.Name == tag);
+                            post.PostHashTags.Add(existingTag);
+                        }
+                        else
+                        {
+                            var newTag = new HashTags { Name = tag };
+                            post.PostHashTags.Add(newTag);
+                        }
+                    }
+                }
+
+                _context.Posts.Update(post);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View("Edit", model);
+        }
+
+        */
 
 
 

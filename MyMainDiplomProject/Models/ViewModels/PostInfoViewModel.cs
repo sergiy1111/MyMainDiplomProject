@@ -19,5 +19,9 @@ namespace MyMainDiplomProject.Models.ViewModels
         public string? TopHasTag4 { get; set; }
         public string? TopHasTag5 { get; set; }
         public string? TopHasTag6 { get; set; }
+
+        //
+        public List<string>? PostHashTags { get; set; }
+        public List<HashTags>? HashTags { get; set; }
     }
 }
